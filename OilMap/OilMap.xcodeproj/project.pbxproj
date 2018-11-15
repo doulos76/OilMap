@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B555A177219DCD270006F9D4 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B555A176219DCD270006F9D4 /* CustomButton.swift */; };
 		B5B71A41219D3971008D8243 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B71A40219D3971008D8243 /* AppDelegate.swift */; };
 		B5B71A43219D3971008D8243 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B71A42219D3971008D8243 /* ViewController.swift */; };
 		B5B71A46219D3971008D8243 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B71A44219D3971008D8243 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B555A176219DCD270006F9D4 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		B5B71A3D219D3971008D8243 /* OilMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OilMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B71A40219D3971008D8243 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5B71A42219D3971008D8243 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 		B5B71A54219D3D99008D8243 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B555A176219DCD270006F9D4 /* CustomButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			files = (
 				B5B71A43219D3971008D8243 /* ViewController.swift in Sources */,
 				B5B71A58219D3E14008D8243 /* UIViewExtensions.swift in Sources */,
+				B555A177219DCD270006F9D4 /* CustomButton.swift in Sources */,
 				B5B71A41219D3971008D8243 /* AppDelegate.swift in Sources */,
 				B5B71A5B219D439F008D8243 /* Constants.swift in Sources */,
 				B5B71A5D219D87C1008D8243 /* MainViewController.swift in Sources */,

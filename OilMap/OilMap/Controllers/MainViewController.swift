@@ -18,56 +18,88 @@ class MainViewController: UIViewController {
     return map
   }()
   
-  let menuButton: UIButton = {
-    let button = UIButton(type: .system)
-    button.translatesAutoresizingMaskIntoConstraints = false
-    button.setImage(UIImage(named: "arrowUpMenuButton"), for: .normal)
-    button.backgroundColor = .customIndigoColor
-    button.tintColor = .white
-    button.layer.cornerRadius = 25
-    button.layer.shadowColor = UIColor.black.cgColor
-    button.layer.shadowRadius = 5
-    button.layer.shadowOpacity = 0.25
-    button.layer.shadowOffset = CGSize(width: 2, height: 10)
+  /// menu button
+  let menuButton: CustomButton = {
+    let button = CustomButton(type: .system)
+    button.textLable.text = "메뉴"
+    button.textLable.isHidden = true
+    button.layer.cornerRadius = 26
+    button.addTarget(self, action: #selector(handleMenuTouched), for: .touchUpInside)
+    return button
+  }()
+  
+  /// list view button
+  var displayListButton: CustomButton = {
+    let button = CustomButton(type: .system)
+    button.textLable.text = "주유소 목록"
+    button.backgroundColor = UIColor.customOrangeColor
+    button.layer.cornerRadius = 22
+    button.addTarget(self, action: #selector(handleMenuTouched), for: .touchUpInside)
+    return button
+  }()
+  
+  /// current location button
+  var currentLocationButton: CustomButton = {
+    let button = CustomButton(type: .system)
+    button.textLable.text = "현재 위치"
+    button.backgroundColor = UIColor.customOrangeColor
+    button.layer.cornerRadius = 22
+    button.addTarget(self, action: #selector(handleMenuTouched), for: .touchUpInside)
+    return button
+  }()
+  
+  // setting button
+  var settingButton: CustomButton = {
+    let button = CustomButton(type: .system)
+    button.textLable.text = "설정"
+    button.backgroundColor = UIColor.customOrangeColor
+    button.layer.cornerRadius = 22
+    button.addTarget(self, action: #selector(handleMenuTouched), for: .touchUpInside)
+    return button
+  }()
+  
+  // search button
+  var searchButton: CustomButton = {
+    let button = CustomButton(type: .system)
+    button.textLable.text = "검색"
+    button.backgroundColor = UIColor.customOrangeColor
+    button.layer.cornerRadius = 22
     button.addTarget(self, action: #selector(handleMenuTouched), for: .touchUpInside)
     return button
   }()
   
   var menuIsExpanded: Bool = false {
     didSet {
-      
+      let menuButtons = [displayListButton, currentLocationButton, searchButton, settingButton]
       if self.menuIsExpanded {
         UIView.animate(withDuration: 0.25, animations: {
-          self.menuButton.imageView?.transform = CGAffineTransform(rotationAngle: -CGFloat.pi)
+          self.menuButton.imageView?.transform = CGAffineTransform(rotationAngle: -0.999 * CGFloat.pi)
           print("menu is expended")
         })
+        for (index, button) in menuButtons.enumerated() {
+          UIView.animate(withDuration: 0.5, delay: 0.2, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+            button.alpha = 1
+            button.transform = CGAffineTransform(translationX: 0, y: -(30 + button.frame.height) * CGFloat(index + 1))
+            button.textLable.alpha = 1
+          })
+        }
         
-//        for index in menuList {
-//          UIView.animate(withDuration: 0.25, delay: 0.25, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: UIView.AnimationOptions.curveEaseInOut, animations: {
-//            self.menuList[index].transform = CGAffineTransform(translationX: 0, y: CGFloat(-62 * index))
-//            self.menuList[index].alpha = 1
-//          }) { (_) in
-//
-//          }
-//
-//        }
       } else {
         UIView.animate(withDuration: 0.25, animations: {
           self.menuButton.imageView?.transform = .identity
           print("menu is not expended")
         })
         
-        
-//        UIView.animate(withDuration: 0.25, delay: 0.25, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: UIView.AnimationOptions.curveEaseInOut, animations: {
-//          self.menuList[index].transform = .identity
-//          self.menuList[index].alpha = 0
-//        }) { (_) in
-//
-//        }
+        for button in menuButtons {
+          UIView.animate(withDuration: 0.5, delay: 0.2, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.2, options: .curveEaseInOut, animations: {
+            button.transform = .identity
+            button.alpha = 0
+          })
+        }
       }
     }
   }
-
+  
   
   var coordinateLabel: String!
   private let locationManager = CLLocationManager()
@@ -98,8 +130,19 @@ class MainViewController: UIViewController {
   fileprivate func setupViews() {
     view.addSubview(mapView)
     mapView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
+    
     view.addSubview(menuButton)
-    menuButton.anchor(top: nil, leading: nil, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 62, right: 16), size: CGSize(width: 50, height: 50))
+    menuButton.anchor(top: nil, leading: nil, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 62, right: 16), size: CGSize(width: 52, height: 52))
+    menuButton.widthAnchor.constraint(equalTo: menuButton.heightAnchor).isActive = true
+    
+    let menuButtons = [displayListButton, currentLocationButton, searchButton, settingButton]
+    menuButtons.forEach { (button) in
+      view.addSubview(button)
+      button.alpha = 0
+      button.anchor(top: nil, leading: nil, bottom: menuButton.bottomAnchor, trailing: nil, padding: .init(top: 0, left: 0, bottom: 0, right: 0), size: CGSize(width: 44, height: 44))
+      button.widthAnchor.constraint(equalTo: button.heightAnchor).isActive = true
+      button.centerXAnchor.constraint(equalTo: menuButton.centerXAnchor).isActive = true
+    }
   }
   
   fileprivate func setupNavibationBarUI() {
