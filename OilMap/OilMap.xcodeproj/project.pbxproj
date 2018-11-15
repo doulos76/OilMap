@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B555A177219DCD270006F9D4 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B555A176219DCD270006F9D4 /* CustomButton.swift */; };
+		B555A179219E05BE0006F9D4 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B555A178219E05BE0006F9D4 /* SearchController.swift */; };
 		B5B71A41219D3971008D8243 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B71A40219D3971008D8243 /* AppDelegate.swift */; };
 		B5B71A43219D3971008D8243 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B71A42219D3971008D8243 /* ViewController.swift */; };
 		B5B71A46219D3971008D8243 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B71A44219D3971008D8243 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		B555A176219DCD270006F9D4 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		B555A178219E05BE0006F9D4 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		B5B71A3D219D3971008D8243 /* OilMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OilMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B71A40219D3971008D8243 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5B71A42219D3971008D8243 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 			children = (
 				B5B71A42219D3971008D8243 /* ViewController.swift */,
 				B5B71A5C219D87C1008D8243 /* MainViewController.swift */,
+				B555A178219E05BE0006F9D4 /* SearchController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 				B5B71A43219D3971008D8243 /* ViewController.swift in Sources */,
 				B5B71A58219D3E14008D8243 /* UIViewExtensions.swift in Sources */,
 				B555A177219DCD270006F9D4 /* CustomButton.swift in Sources */,
+				B555A179219E05BE0006F9D4 /* SearchController.swift in Sources */,
 				B5B71A41219D3971008D8243 /* AppDelegate.swift in Sources */,
 				B5B71A5B219D439F008D8243 /* Constants.swift in Sources */,
 				B5B71A5D219D87C1008D8243 /* MainViewController.swift in Sources */,

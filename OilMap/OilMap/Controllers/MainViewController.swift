@@ -64,7 +64,7 @@ class MainViewController: UIViewController {
     button.textLable.text = "검색"
     button.backgroundColor = UIColor.customOrangeColor
     button.layer.cornerRadius = 22
-    button.addTarget(self, action: #selector(handleMenuTouched), for: .touchUpInside)
+    button.addTarget(self, action: #selector(moveToSearchController), for: .touchUpInside)
     return button
   }()
   
@@ -153,6 +153,14 @@ class MainViewController: UIViewController {
   @objc func handleMenuTouched() {
     print("menu button touched")
     menuIsExpanded = !menuIsExpanded
+  }
+  
+  @objc func moveToSearchController() {
+    let searchController = SearchController()
+    let navController = CustomNavigationController(rootViewController: searchController)
+    present(navController, animated: true) {
+      //
+    }
   }
 }
 
