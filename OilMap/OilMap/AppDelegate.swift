@@ -8,6 +8,12 @@
 
 import UIKit
 
+class CustomNavigationController: UINavigationController {
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .default
+  }
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,6 +22,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
+    
+    // MARK:- Setup UINavigationBar appearance
+    UINavigationBar.appearance().tintColor = UIColor.customBisqueColor
+    UINavigationBar.appearance().isTranslucent = false
+    UINavigationBar.appearance().barTintColor = UIColor.customApricotColor
+    UINavigationBar.appearance().prefersLargeTitles = true
+    UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.customIndigoColor]
+    UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.customIndigoColor]
+    
+    window = UIWindow()
+    window?.makeKeyAndVisible()
+    let mainViewController = MainViewController()
+    let navController = CustomNavigationController(rootViewController: mainViewController)
+    window?.rootViewController = navController
     return true
   }
 

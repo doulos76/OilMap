@@ -14,6 +14,7 @@
 		B5B71A4B219D3972008D8243 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B71A49219D3972008D8243 /* LaunchScreen.storyboard */; };
 		B5B71A58219D3E14008D8243 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B71A57219D3E14008D8243 /* UIViewExtensions.swift */; };
 		B5B71A5B219D439F008D8243 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B71A5A219D439F008D8243 /* Constants.swift */; };
+		B5B71A5D219D87C1008D8243 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B71A5C219D87C1008D8243 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		B5B71A4C219D3972008D8243 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5B71A57219D3E14008D8243 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		B5B71A5A219D439F008D8243 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B5B71A5C219D87C1008D8243 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +68,6 @@
 				B5B71A52219D3D93008D8243 /* Extensions */,
 				B5B71A59219D4382008D8243 /* Constants */,
 				B5B71A44219D3971008D8243 /* Main.storyboard */,
-				B5B71A42219D3971008D8243 /* ViewController.swift */,
 				B5B71A47219D3972008D8243 /* Assets.xcassets */,
 				B5B71A49219D3972008D8243 /* LaunchScreen.storyboard */,
 				B5B71A4C219D3972008D8243 /* Info.plist */,
@@ -85,6 +86,8 @@
 		B5B71A53219D3D97008D8243 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B5B71A42219D3971008D8243 /* ViewController.swift */,
+				B5B71A5C219D87C1008D8243 /* MainViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				B5B71A58219D3E14008D8243 /* UIViewExtensions.swift in Sources */,
 				B5B71A41219D3971008D8243 /* AppDelegate.swift in Sources */,
 				B5B71A5B219D439F008D8243 /* Constants.swift in Sources */,
+				B5B71A5D219D87C1008D8243 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
