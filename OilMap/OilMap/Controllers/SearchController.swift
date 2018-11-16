@@ -17,7 +17,7 @@ class SearchController: UITableViewController {
     super.viewDidLoad()
     
     navigationItem.title = "검색"
-    tableView.backgroundColor = .customBisqueColor
+    tableView.backgroundColor = .white
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
   }
   
@@ -28,7 +28,7 @@ class SearchController: UITableViewController {
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
     cell.textLabel?.text = menu[indexPath.row]
-    cell.backgroundColor = .customBisqueColor
+    cell.backgroundColor = .white
     return cell
   }
   

@@ -61,11 +61,20 @@ class MainViewController: UIViewController {
   // search button
   var searchButton: CustomButton = {
     let button = CustomButton(type: .system)
-    button.textLable.text = "검색"
+    button.textLable.text = "지역 검색"
     button.backgroundColor = UIColor.customOrangeColor
     button.layer.cornerRadius = 22
-    button.addTarget(self, action: #selector(moveToSearchController), for: .touchUpInside)
+    button.addTarget(self, action: #selector(searchLocalGasStation), for: .touchUpInside)
     return button
+  }()
+  
+  // searchTextField
+  var searchTextField: CustomTextField = {
+    let textField = CustomTextField()
+    textField.placeholder = "검색지역을 입력해 주세요.(예:서울 강남)"
+    textField.attributedPlaceholder = NSAttributedString(string: textField.placeholder!, attributes: [NSAttributedString.Key.foregroundColor : UIColor(white: 0.8, alpha: 0.8)])
+    
+    return textField
   }()
   
   var menuIsExpanded: Bool = false {
@@ -83,7 +92,6 @@ class MainViewController: UIViewController {
             button.textLable.alpha = 1
           })
         }
-        
       } else {
         UIView.animate(withDuration: 0.25, animations: {
           self.menuButton.imageView?.transform = .identity
@@ -99,7 +107,6 @@ class MainViewController: UIViewController {
       }
     }
   }
-  
   
   var coordinateLabel: String!
   private let locationManager = CLLocationManager()
@@ -126,13 +133,18 @@ class MainViewController: UIViewController {
     }
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    view.layoutIfNeeded()
+  }
+  
   // MARK:- Setup Works
   fileprivate func setupViews() {
     view.addSubview(mapView)
     mapView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
     
     view.addSubview(menuButton)
-    menuButton.anchor(top: nil, leading: nil, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 62, right: 16), size: CGSize(width: 52, height: 52))
+    menuButton.anchor(top: nil, leading: nil, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 150, right: 16), size: CGSize(width: 52, height: 52))
     menuButton.widthAnchor.constraint(equalTo: menuButton.heightAnchor).isActive = true
     
     let menuButtons = [displayListButton, currentLocationButton, searchButton, settingButton]
@@ -143,6 +155,8 @@ class MainViewController: UIViewController {
       button.widthAnchor.constraint(equalTo: button.heightAnchor).isActive = true
       button.centerXAnchor.constraint(equalTo: menuButton.centerXAnchor).isActive = true
     }
+    
+ 
   }
   
   fileprivate func setupNavibationBarUI() {
@@ -153,6 +167,33 @@ class MainViewController: UIViewController {
   @objc func handleMenuTouched() {
     print("menu button touched")
     menuIsExpanded = !menuIsExpanded
+    print(menuButton.frame)
+  }
+  
+  fileprivate func setupTextField() {
+    view.addSubview(searchTextField)
+    searchTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+    searchTextField.trailingAnchor.constraint(equalTo: menuButton.leadingAnchor, constant: 0).isActive = true
+    searchTextField.heightAnchor.constraint(equalToConstant: 30).isActive = true
+    searchTextField.bottomAnchor.constraint(equalTo: menuButton.topAnchor, constant: -177).isActive = true
+    
+    UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.2, options: .curveEaseInOut, animations: {
+      self.searchButton.textLable.isHidden = true
+      self.searchTextField.transform = CGAffineTransform(translationX: -6, y: 0)
+    }) { (_) in
+      //
+    }
+  }
+  
+  @objc func searchLocalGasStation() {
+    print("Searching Local GasStation")
+    searchButton.textLable.isHidden = false
+    setupTextField()
+    print(searchButton.frame)
+//    setupTextField()
+//    view.addSubview(searchTextField)
+//    searchTextField.anchor(top: nil, leading: view.leadingAnchor, bottom: nil, trailing: searchButton.leadingAnchor, padding: .init(top: 0, left: 20, bottom: 0, right: 16), size: CGSize(width: 0, height: 30))
+    print("searchTextField: ",searchTextField.frame)
   }
   
   @objc func moveToSearchController() {

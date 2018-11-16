@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B53E1563219EA06800A7D4A9 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53E1562219EA06800A7D4A9 /* CustomTextField.swift */; };
 		B555A177219DCD270006F9D4 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B555A176219DCD270006F9D4 /* CustomButton.swift */; };
 		B555A179219E05BE0006F9D4 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B555A178219E05BE0006F9D4 /* SearchController.swift */; };
 		B5B71A41219D3971008D8243 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B71A40219D3971008D8243 /* AppDelegate.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B53E1562219EA06800A7D4A9 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		B555A176219DCD270006F9D4 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		B555A178219E05BE0006F9D4 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		B5B71A3D219D3971008D8243 /* OilMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OilMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				B555A176219DCD270006F9D4 /* CustomButton.swift */,
+				B53E1562219EA06800A7D4A9 /* CustomTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 				B5B71A58219D3E14008D8243 /* UIViewExtensions.swift in Sources */,
 				B555A177219DCD270006F9D4 /* CustomButton.swift in Sources */,
 				B555A179219E05BE0006F9D4 /* SearchController.swift in Sources */,
+				B53E1563219EA06800A7D4A9 /* CustomTextField.swift in Sources */,
 				B5B71A41219D3971008D8243 /* AppDelegate.swift in Sources */,
 				B5B71A5B219D439F008D8243 /* Constants.swift in Sources */,
 				B5B71A5D219D87C1008D8243 /* MainViewController.swift in Sources */,
