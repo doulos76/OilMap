@@ -44,7 +44,7 @@ class MainViewController: UIViewController {
     button.textLable.text = "현재 위치"
     button.backgroundColor = UIColor.customOrangeColor
     button.layer.cornerRadius = 22
-    button.addTarget(self, action: #selector(handleMenuTouched), for: .touchUpInside)
+    button.addTarget(self, action: #selector(handleCurrentLocationButtonTouched), for: .touchUpInside)
     return button
   }()
   
@@ -90,6 +90,7 @@ class MainViewController: UIViewController {
             button.alpha = 1
             button.transform = CGAffineTransform(translationX: 0, y: -(30 + button.frame.height) * CGFloat(index + 1))
             button.textLable.alpha = 1
+            self.searchButton.textLable.isHidden = false
           })
         }
       } else {
@@ -115,6 +116,7 @@ class MainViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     locationManager.delegate = self
+    searchTextField.delegate = self
     view.backgroundColor = .white
     setupNavibationBarUI()
     setupViews()
@@ -167,7 +169,12 @@ class MainViewController: UIViewController {
   @objc func handleMenuTouched() {
     print("menu button touched")
     menuIsExpanded = !menuIsExpanded
-    print(menuButton.frame)
+  }
+  
+  @objc func handleCurrentLocationButtonTouched() {
+    print("currentLocation Button Touched")
+    handleMenuTouched()
+    
   }
   
   fileprivate func setupTextField() {
@@ -179,6 +186,8 @@ class MainViewController: UIViewController {
     
     UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.2, options: .curveEaseInOut, animations: {
       self.searchButton.textLable.isHidden = true
+      self.searchTextField.isHidden = false
+      self.searchTextField.alpha = 1
       self.searchTextField.transform = CGAffineTransform(translationX: -6, y: 0)
     }) { (_) in
       //
@@ -224,5 +233,20 @@ extension MainViewController: CLLocationManagerDelegate {
     default:
       print("Unauthorized")
     }
+  }
+}
+
+
+extension MainViewController: UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    print("\n================[enter button pressed]================\n")
+    searchTextField.resignFirstResponder()
+    UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.2, options: UIView.AnimationOptions.transitionFlipFromRight, animations: {
+      self.searchTextField.alpha = 0
+      self.menuIsExpanded = false
+    }) { (_) in
+      //
+    }
+    return true
   }
 }
