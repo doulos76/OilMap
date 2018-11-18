@@ -28,6 +28,15 @@ class MainViewController: UIViewController {
     return button
   }()
   
+  /// coordinateLabel
+  var coordinateLabel: UILabel = {
+    let label = UILabel()
+    label.backgroundColor = .darkGray
+    label.alpha = 0.8
+    label.textColor = .white
+    return label
+  }()
+  
   /// list view button
   var displayListButton: CustomButton = {
     let button = CustomButton(type: .system)
@@ -109,7 +118,12 @@ class MainViewController: UIViewController {
     }
   }
   
-  var coordinateLabel: String!
+  //  var coordinateLabel: String {
+  //    didSet {
+  //
+  //    }
+  //  }
+  
   private let locationManager = CLLocationManager()
   
   // MARK:- View Life Cycle
@@ -120,6 +134,7 @@ class MainViewController: UIViewController {
     view.backgroundColor = .white
     setupNavibationBarUI()
     setupViews()
+    startUpdatingLocation()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -140,6 +155,48 @@ class MainViewController: UIViewController {
     view.layoutIfNeeded()
   }
   
+  private func moveToInitialCoordinate() {
+    let center = CLLocationCoordinate2D(latitude: 37.572851, longitude: 126.976881)
+    let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+    let region = MKCoordinateRegion(center: center, span: span)
+    mapView.setRegion(region, animated: true)
+  }
+  
+  private func moveToCoordinate(center: CLLocationCoordinate2D) {
+    let center = CLLocationCoordinate2D(latitude: center.latitude, longitude: center.longitude)
+    let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+    let region = MKCoordinateRegion(center: center, span: span)
+    mapView.setRegion(region, animated: true)
+  }
+
+  
+  private func updateCurrentLocation() {
+    locationManager.requestLocation()
+    let coordinate = mapView.centerCoordinate
+//    coordinateLabel.text = String(format: "위도: %2.4f, 경도: %2.4f", arguments: [coordinate.latitude, coordinate.longitude])
+    startUpdatingLocation()
+    let center = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
+    stopUpdatieLocation()
+    moveToCoordinate(center: center)
+  }
+  
+  private func startUpdatingLocation() {
+    switch CLLocationManager.authorizationStatus() {
+    case .notDetermined:
+      locationManager.requestWhenInUseAuthorization()
+    case .denied, .restricted:
+      print("앱을 사용하기 위해서는 위치 정보 사용 권한이 필요합니다.")
+    case .authorizedAlways, .authorizedWhenInUse:
+      locationManager.desiredAccuracy = kCLLocationAccuracyBest
+      locationManager.distanceFilter = kCLHeadingFilterNone
+      locationManager.startUpdatingLocation()
+    }
+  }
+  
+  func stopUpdatieLocation() {
+    locationManager.stopUpdatingLocation()
+  }
+  
   // MARK:- Setup Works
   fileprivate func setupViews() {
     view.addSubview(mapView)
@@ -157,8 +214,6 @@ class MainViewController: UIViewController {
       button.widthAnchor.constraint(equalTo: button.heightAnchor).isActive = true
       button.centerXAnchor.constraint(equalTo: menuButton.centerXAnchor).isActive = true
     }
-    
- 
   }
   
   fileprivate func setupNavibationBarUI() {
@@ -174,7 +229,8 @@ class MainViewController: UIViewController {
   @objc func handleCurrentLocationButtonTouched() {
     print("currentLocation Button Touched")
     handleMenuTouched()
-    
+//    moveToInitialCoordinate()
+    updateCurrentLocation()
   }
   
   fileprivate func setupTextField() {
@@ -199,9 +255,9 @@ class MainViewController: UIViewController {
     searchButton.textLable.isHidden = false
     setupTextField()
     print(searchButton.frame)
-//    setupTextField()
-//    view.addSubview(searchTextField)
-//    searchTextField.anchor(top: nil, leading: view.leadingAnchor, bottom: nil, trailing: searchButton.leadingAnchor, padding: .init(top: 0, left: 20, bottom: 0, right: 16), size: CGSize(width: 0, height: 30))
+    //    setupTextField()
+    //    view.addSubview(searchTextField)
+    //    searchTextField.anchor(top: nil, leading: view.leadingAnchor, bottom: nil, trailing: searchButton.leadingAnchor, padding: .init(top: 0, left: 20, bottom: 0, right: 16), size: CGSize(width: 0, height: 30))
     print("searchTextField: ",searchTextField.frame)
   }
   
@@ -219,7 +275,12 @@ extension MainViewController: CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     guard let location = locations.last else { return }
     let coordinate = location.coordinate
-    coordinateLabel = String(format: "위도: %2.4f, 경도: %2.4f", arguments: [coordinate.latitude, coordinate.longitude])
+    coordinateLabel.text = String(format: "위도: %2.4f, 경도: %2.4f", arguments: [coordinate.latitude, coordinate.longitude])
+    let center = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
+    let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+    let region = MKCoordinateRegion(center: center, span: span)
+    mapView.setRegion(region, animated: true)
+    locationManager.stopUpdatingLocation()
   }
   
   func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
