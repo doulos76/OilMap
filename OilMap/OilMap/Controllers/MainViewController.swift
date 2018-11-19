@@ -13,15 +13,54 @@ import UIKit
 class MainViewController: UIViewController {
   
   // MARK:- Properties
+  let oilTypeLabel: CustomLabel = {
+    let label = CustomLabel()
+    label.text = "휘발유"
+    return label
+  }()
+  
+  let currentMapMinimumOilPriceLabel: CustomLabel = {
+    let label = CustomLabel()
+    label.text = "최저: 1458원"
+    label.textColor = UIColor.black
+    label.backgroundColor = UIColor.customOrangeColor
+    return label
+  }()
+
+  let nationalAvgOilPriceLabel: CustomLabel = {
+    let label = CustomLabel()
+    label.text = "전국평균: 1567원"
+    return label
+  }()
+
+  let nationalMinimumOilPriceLabel: CustomLabel = {
+    let label = CustomLabel()
+    label.text = "전국최저: 1375원"
+    return label
+  }()
+
+  let radiusButton: RectangleCustomButton = {
+    let button = RectangleCustomButton()
+    button.setTitle("반경: \(5)Km", for: .normal)
+    return button
+  }()
+  
+  let moveLocationButton: RectangleCustomButton = {
+    let button = RectangleCustomButton()
+    button.setTitle("위치이동: \("ON")", for: .normal)
+    return button
+  }()
+  
   var mapView: MKMapView = {
     let map = MKMapView()
     return map
   }()
   
   /// menu button
-  let menuButton: CustomButton = {
-    let button = CustomButton(type: .system)
+  let menuButton: RoundCustomButton = {
+    let button = RoundCustomButton(type: .system)
     button.textLable.text = "메뉴"
+    button.setImage(UIImage(named: "arrowUpMenuButton"), for: .normal)
     button.textLable.isHidden = true
     button.layer.cornerRadius = 26
     button.addTarget(self, action: #selector(handleMenuTouched), for: .touchUpInside)
@@ -38,9 +77,10 @@ class MainViewController: UIViewController {
   }()
   
   /// list view button
-  var displayListButton: CustomButton = {
-    let button = CustomButton(type: .system)
+  var displayListButton: RoundCustomButton = {
+    let button = RoundCustomButton(type: .system)
     button.textLable.text = "주유소 목록"
+    button.setImage(UIImage(named: "iconMenuList"), for: .normal)
     button.backgroundColor = UIColor.customOrangeColor
     button.layer.cornerRadius = 22
     button.addTarget(self, action: #selector(handleMenuTouched), for: .touchUpInside)
@@ -48,9 +88,10 @@ class MainViewController: UIViewController {
   }()
   
   /// current location button
-  var currentLocationButton: CustomButton = {
-    let button = CustomButton(type: .system)
+  var currentLocationButton: RoundCustomButton = {
+    let button = RoundCustomButton(type: .system)
     button.textLable.text = "현재 위치"
+    button.setImage(UIImage(named: "iconMenuLocation"), for: .normal)
     button.backgroundColor = UIColor.customOrangeColor
     button.layer.cornerRadius = 22
     button.addTarget(self, action: #selector(handleCurrentLocationButtonTouched), for: .touchUpInside)
@@ -58,19 +99,36 @@ class MainViewController: UIViewController {
   }()
   
   // setting button
-  var settingButton: CustomButton = {
-    let button = CustomButton(type: .system)
+  var settingButton: RoundCustomButton = {
+    let button = RoundCustomButton(type: .system)
     button.textLable.text = "설정"
+    button.setImage(UIImage(named: "iconMenuSetting"), for: .normal)
     button.backgroundColor = UIColor.customOrangeColor
     button.layer.cornerRadius = 22
-    button.addTarget(self, action: #selector(handleMenuTouched), for: .touchUpInside)
+    button.addTarget(self, action: #selector(moveToSettingController), for: .touchUpInside)
     return button
   }()
   
+  @objc func moveToSettingController() {
+    handleMenuTouched()
+    print("moveToSettingController")
+    let settingController = SettingController()
+
+    let navController = CustomNavigationController(rootViewController: settingController)
+    present(navController, animated: true)
+
+    
+//    let searchController = SearchController()
+//    let navController = CustomNavigationController(rootViewController: searchController)
+//    present(navController, animated: true) {
+    
+  }
+  
   // search button
-  var searchButton: CustomButton = {
-    let button = CustomButton(type: .system)
+  var searchButton: RoundCustomButton = {
+    let button = RoundCustomButton(type: .system)
     button.textLable.text = "지역 검색"
+    button.setImage(UIImage(named: "iconMenuSearch"), for: .normal)
     button.backgroundColor = UIColor.customOrangeColor
     button.layer.cornerRadius = 22
     button.addTarget(self, action: #selector(searchLocalGasStation), for: .touchUpInside)
@@ -82,7 +140,6 @@ class MainViewController: UIViewController {
     let textField = CustomTextField()
     textField.placeholder = "검색지역을 입력해 주세요.(예:서울 강남)"
     textField.attributedPlaceholder = NSAttributedString(string: textField.placeholder!, attributes: [NSAttributedString.Key.foregroundColor : UIColor(white: 0.8, alpha: 0.8)])
-    
     return textField
   }()
   
@@ -214,6 +271,25 @@ class MainViewController: UIViewController {
       button.widthAnchor.constraint(equalTo: button.heightAnchor).isActive = true
       button.centerXAnchor.constraint(equalTo: menuButton.centerXAnchor).isActive = true
     }
+    
+    let arrangedOilPriceDisplaySubView = [oilTypeLabel, currentMapMinimumOilPriceLabel, nationalAvgOilPriceLabel, nationalMinimumOilPriceLabel]
+    let oilPriceDisplayStackView = UIStackView(arrangedSubviews: arrangedOilPriceDisplaySubView)
+    oilPriceDisplayStackView.axis = .vertical
+    oilPriceDisplayStackView.alignment = .fill
+    oilPriceDisplayStackView.distribution = .equalSpacing
+    oilPriceDisplayStackView.spacing = 2
+//    view.addSubview(oilPriceDisplayStackView)
+    
+    let arrangedDisplayStackView = [oilPriceDisplayStackView, radiusButton, moveLocationButton]
+    let displayStackView = UIStackView(arrangedSubviews: arrangedDisplayStackView)
+    displayStackView.axis = .horizontal
+    displayStackView.distribution = .fillEqually
+    displayStackView.alignment = .top
+    displayStackView.spacing = 20
+    view.addSubview(displayStackView)
+    
+    displayStackView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 50, left: 20, bottom: 0, right: 20), size: CGSize(width: 0, height: 26))
+    
   }
   
   fileprivate func setupNavibationBarUI() {
@@ -255,9 +331,6 @@ class MainViewController: UIViewController {
     searchButton.textLable.isHidden = false
     setupTextField()
     print(searchButton.frame)
-    //    setupTextField()
-    //    view.addSubview(searchTextField)
-    //    searchTextField.anchor(top: nil, leading: view.leadingAnchor, bottom: nil, trailing: searchButton.leadingAnchor, padding: .init(top: 0, left: 20, bottom: 0, right: 16), size: CGSize(width: 0, height: 30))
     print("searchTextField: ",searchTextField.frame)
   }
   
@@ -296,7 +369,6 @@ extension MainViewController: CLLocationManagerDelegate {
     }
   }
 }
-
 
 extension MainViewController: UITextFieldDelegate {
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {

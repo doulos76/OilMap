@@ -20,7 +20,7 @@ class CustomTextField: UITextField {
     backgroundColor = UIColor.customIndigoColor
     alpha = 0.9
     translatesAutoresizingMaskIntoConstraints = false
-
+    becomeFirstResponder()
   }
   
   required init?(coder aDecoder: NSCoder) {

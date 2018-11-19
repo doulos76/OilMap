@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomButton: UIButton {
+class RoundCustomButton: UIButton {
   
   let textLable: UILabel = {
     let label = UILabel()
@@ -26,7 +26,7 @@ class CustomButton: UIButton {
   override init(frame: CGRect) {
     super.init(frame: frame)
     translatesAutoresizingMaskIntoConstraints = false
-    setImage(UIImage(named: "arrowUpMenuButton"), for: .normal)
+    setImage(UIImage(named: "iconAd"), for: .normal)
     imageView?.contentMode = .scaleToFill
     backgroundColor = .customIndigoColor
     tintColor = .white

@@ -18,7 +18,7 @@ class SearchController: UITableViewController {
     
     navigationItem.title = "검색"
     tableView.backgroundColor = .white
-    tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+    tableView.register(RadiusCell.self, forCellReuseIdentifier: cellId)
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -26,8 +26,8 @@ class SearchController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-    cell.textLabel?.text = menu[indexPath.row]
+    let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! RadiusCell
+//    cell.textLabel?.text = menu[indexPath.row]
     cell.backgroundColor = .white
     return cell
   }
