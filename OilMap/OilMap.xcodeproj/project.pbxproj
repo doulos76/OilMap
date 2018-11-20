@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B51B940321A3E34000BE346B /* GasStationListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51B940221A3E34000BE346B /* GasStationListController.swift */; };
+		B51B940521A3E63F00BE346B /* GasStationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51B940421A3E63F00BE346B /* GasStationCell.swift */; };
+		B51B940721A3F18500BE346B /* SelectSortListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51B940621A3F18500BE346B /* SelectSortListView.swift */; };
 		B51BB5CD21A26C2F00F852D2 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51BB5CC21A26C2F00F852D2 /* CustomLabel.swift */; };
 		B51BB5CF21A28BED00F852D2 /* RectangleCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51BB5CE21A28BED00F852D2 /* RectangleCustomButton.swift */; };
 		B51BB5D121A2A13D00F852D2 /* SettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51BB5D021A2A13D00F852D2 /* SettingController.swift */; };
@@ -27,6 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B51B940221A3E34000BE346B /* GasStationListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasStationListController.swift; sourceTree = "<group>"; };
+		B51B940421A3E63F00BE346B /* GasStationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasStationCell.swift; sourceTree = "<group>"; };
+		B51B940621A3F18500BE346B /* SelectSortListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSortListView.swift; sourceTree = "<group>"; };
 		B51BB5CC21A26C2F00F852D2 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		B51BB5CE21A28BED00F852D2 /* RectangleCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleCustomButton.swift; sourceTree = "<group>"; };
 		B51BB5D021A2A13D00F852D2 /* SettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingController.swift; sourceTree = "<group>"; };
@@ -108,6 +114,7 @@
 				B5B71A5C219D87C1008D8243 /* MainViewController.swift */,
 				B555A178219E05BE0006F9D4 /* SearchController.swift */,
 				B51BB5D021A2A13D00F852D2 /* SettingController.swift */,
+				B51B940221A3E34000BE346B /* GasStationListController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -122,6 +129,8 @@
 				B555A176219DCD270006F9D4 /* RoundCustomButton.swift */,
 				B51BB5D421A2C09100F852D2 /* RadiusCircularButton.swift */,
 				B51BB5F421A2E1A000F852D2 /* OilTypeCircularButton.swift */,
+				B51B940421A3E63F00BE346B /* GasStationCell.swift */,
+				B51B940621A3F18500BE346B /* SelectSortListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -222,14 +231,17 @@
 				B51BB5D521A2C09100F852D2 /* RadiusCircularButton.swift in Sources */,
 				B5B71A43219D3971008D8243 /* ViewController.swift in Sources */,
 				B51BB5CD21A26C2F00F852D2 /* CustomLabel.swift in Sources */,
+				B51B940721A3F18500BE346B /* SelectSortListView.swift in Sources */,
 				B51BB5CF21A28BED00F852D2 /* RectangleCustomButton.swift in Sources */,
 				B5B71A58219D3E14008D8243 /* UIViewExtensions.swift in Sources */,
+				B51B940321A3E34000BE346B /* GasStationListController.swift in Sources */,
 				B51BB5F521A2E1A000F852D2 /* OilTypeCircularButton.swift in Sources */,
 				B555A177219DCD270006F9D4 /* RoundCustomButton.swift in Sources */,
 				B555A179219E05BE0006F9D4 /* SearchController.swift in Sources */,
 				B53E1563219EA06800A7D4A9 /* CustomTextField.swift in Sources */,
 				B51BB5D321A2BC9400F852D2 /* RadiusCell.swift in Sources */,
 				B5B71A41219D3971008D8243 /* AppDelegate.swift in Sources */,
+				B51B940521A3E63F00BE346B /* GasStationCell.swift in Sources */,
 				B51BB5D121A2A13D00F852D2 /* SettingController.swift in Sources */,
 				B5B71A5B219D439F008D8243 /* Constants.swift in Sources */,
 				B5B71A5D219D87C1008D8243 /* MainViewController.swift in Sources */,

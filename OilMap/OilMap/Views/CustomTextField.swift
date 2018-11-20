@@ -17,6 +17,7 @@ class CustomTextField: UITextField {
     layer.cornerRadius = 5
 
     textColor = .white
+    tintColor = .white
     backgroundColor = UIColor.customIndigoColor
     alpha = 0.9
     translatesAutoresizingMaskIntoConstraints = false

@@ -83,9 +83,17 @@ class MainViewController: UIViewController {
     button.setImage(UIImage(named: "iconMenuList"), for: .normal)
     button.backgroundColor = UIColor.customOrangeColor
     button.layer.cornerRadius = 22
-    button.addTarget(self, action: #selector(handleMenuTouched), for: .touchUpInside)
+    button.addTarget(self, action: #selector(moveToGasStationListController), for: .touchUpInside)
     return button
   }()
+  
+  @objc func moveToGasStationListController() {
+    print("move to Gas Station List controller")
+    let gasStationListController = GasStationListController()
+    let navController = CustomNavigationController(rootViewController: gasStationListController)
+    present(navController, animated: true, completion: nil)
+//    navController.pushViewController(navController, animated: true)
+  }
   
   /// current location button
   var currentLocationButton: RoundCustomButton = {
@@ -192,6 +200,7 @@ class MainViewController: UIViewController {
     setupNavibationBarUI()
     setupViews()
     startUpdatingLocation()
+    mapView.showsUserLocation = true
   }
   
   override func viewDidAppear(_ animated: Bool) {
