@@ -61,8 +61,9 @@ class GasStationCell: UITableViewCell {
     
     stationImageView.anchor(top: nil, leading: leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 0, left: 16, bottom: 0, right: 0), size: CGSize(width: 40, height: 40))
     stationImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+    
+    priceLabel.anchor(top: topAnchor, leading: nil, bottom: nil, trailing: accessoryView?.trailingAnchor, padding: .init(top: 16, left: 0, bottom: 0, right: 8), size: CGSize(width: 60, height: 22))
     titleLabel.anchor(top: topAnchor, leading: stationImageView.trailingAnchor, bottom: nil, trailing: priceLabel.leadingAnchor, padding: .init(top: 16, left: 8, bottom: 0, right: 16), size: CGSize(width: 0, height: 50))
-    priceLabel.anchor(top: topAnchor, leading: nil, bottom: nil, trailing: accessoryView?.leadingAnchor, padding: .init(top: 16, left: 0, bottom: 0, right: 8), size: CGSize(width: 60, height: 22))
     distanceLabel.anchor(top: nil, leading: priceLabel.leadingAnchor, bottom: bottomAnchor, trailing: priceLabel.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 16, right: 0), size: CGSize(width: 0, height: 50))
   }
   

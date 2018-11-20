@@ -24,12 +24,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Override point for customization after application launch.
     
     // MARK:- Setup UINavigationBar appearance
-    UINavigationBar.appearance().tintColor = UIColor.customOrangeColor
+    UINavigationBar.appearance().tintColor = UIColor.white
     UINavigationBar.appearance().isTranslucent = false
-    UINavigationBar.appearance().barTintColor = UIColor.customOrangeColor
+    UINavigationBar.appearance().barTintColor = UIColor.white
     UINavigationBar.appearance().prefersLargeTitles = true
-    UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-    UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+    UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+    UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
     
     window = UIWindow()
     window?.makeKeyAndVisible()
