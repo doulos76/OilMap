@@ -10,6 +10,8 @@ import UIKit
 
 class GasStationListController: UIViewController {
   
+  let dummyTitle = ["우리 주유소", "신기촌 주유소", "신기전 주유소 주식회사 - SK LG ", "소중한 꿈을 지켜주는 교보문고 주유소", "이런 주유소 저런 주요소 그런 주유소"]
+  
   let cellId = "cellId"
   let selectSortListView = SelectSortListView()
   let tableView = UITableView()
@@ -47,23 +49,30 @@ class GasStationListController: UIViewController {
     tableView.delegate = self
     tableView.register(GasStationCell.self, forCellReuseIdentifier: cellId)
   }
+  
 }
 
 // MARK:- TableViewDelegate Method
 extension GasStationListController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 120
+  }
+
+  func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
     return 80
-  }  
+  }
 }
 
 // MARK:- TableViewDataSource Method
 extension GasStationListController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 10
+    return dummyTitle.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! GasStationCell
+    cell.titleLabel.numberOfLines = 0
+    cell.titleLabel.text = dummyTitle[indexPath.row]
     return cell
   }
 }
