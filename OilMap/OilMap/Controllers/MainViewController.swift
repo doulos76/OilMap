@@ -113,9 +113,26 @@ class MainViewController: UIViewController {
     button.setImage(UIImage(named: "iconMenuSetting"), for: .normal)
     button.backgroundColor = UIColor.customOrangeColor
     button.layer.cornerRadius = 22
-    button.addTarget(self, action: #selector(moveToSettingController), for: .touchUpInside)
+//    button.addTarget(self, action: #selector(displaySettingsAViewController), for: .touchUpInside)
+    button.addTarget(self, action: #selector(displaySettingsViewController), for: .touchUpInside)
+//    button.addTarget(self, action: #selector(moveToSettingController), for: .touchUpInside)
     return button
   }()
+  
+  @objc func displaySettingsViewController() {
+    handleMenuTouched()
+    print("display Setting View Controller")
+    let settingController = SettingController()
+//    let navController = CustomNavigationController(rootViewController: settingController)
+    settingController.modalPresentationStyle = .custom
+    present(settingController, animated: true, completion: nil)
+  }
+  
+  @objc func displaySettingsAViewController() {
+    let vc = ViewControllerB()
+    vc.modalPresentationStyle = .custom
+    present(vc, animated: true, completion: nil)
+  }
   
   @objc func moveToSettingController() {
     handleMenuTouched()
@@ -124,12 +141,6 @@ class MainViewController: UIViewController {
 
     let navController = CustomNavigationController(rootViewController: settingController)
     present(navController, animated: true)
-
-    
-//    let searchController = SearchController()
-//    let navController = CustomNavigationController(rootViewController: searchController)
-//    present(navController, animated: true) {
-    
   }
   
   // search button
