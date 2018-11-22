@@ -55,12 +55,12 @@ class GasStationListController: UIViewController {
 // MARK:- TableViewDelegate Method
 extension GasStationListController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 120
+    return 90
   }
 
-  func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 80
-  }
+//  func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//    return 80
+//  }
 }
 
 // MARK:- TableViewDataSource Method

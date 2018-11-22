@@ -23,7 +23,6 @@ class GasStationCell: UITableViewCell {
     label.textColor = .black
     label.text = "SJ 주유소"
     label.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 18)
-    label.backgroundColor = .red
     label.numberOfLines = 0
     return label
   }()
@@ -31,7 +30,6 @@ class GasStationCell: UITableViewCell {
   let priceLabel: UILabel = {
     let label = UILabel()
     label.textColor = .black
-    label.backgroundColor = .green
     label.text = "1515 원"
     label.textAlignment = .right
     label.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
@@ -41,23 +39,67 @@ class GasStationCell: UITableViewCell {
   let distanceLabel: UILabel = {
     let label = UILabel()
     label.textColor = .black
-    label.backgroundColor = .yellow
     label.text = "22.51 Km"
     label.textAlignment = .right
     label.font = UIFont(name: "AppleSDGothicNeo-Thin", size: 18)
     return label
   }()
   
-  let optionLabel: UILabel = {
+  let optionLabel1: UILabel = {
+    let label = UILabel()
+    label.textColor = .black
+    label.backgroundColor = .orange
+    label.text = "셀프"
+    label.textAlignment = .center
+    label.font = UIFont.boldSystemFont(ofSize: 12)
+    label.textColor = .white
+    return label
+  }()
+
+  let optionLabel2: UILabel = {
     let label = UILabel()
     label.textColor = .black
     label.backgroundColor = .orange
     label.text = "세차"
-    label.textAlignment = .right
-    label.font = UIFont(name: "AppleSDGothicNeo-Thin", size: 18)
+    label.textAlignment = .center
+    label.font = UIFont.boldSystemFont(ofSize: 12)
+    label.textColor = .white
     return label
   }()
+  
+  let optionLabel3: UILabel = {
+    let label = UILabel()
+    label.textColor = .black
+    label.backgroundColor = .orange
+    label.text = "24시"
+    label.textAlignment = .center
+    label.font = UIFont.boldSystemFont(ofSize: 12)
+    label.textColor = .white
 
+    return label
+  }()
+  
+  let optionLabel4: UILabel = {
+    let label = UILabel()
+    label.textColor = .black
+    label.backgroundColor = .orange
+    label.text = "편의점"
+    label.textAlignment = .center
+    label.font = UIFont.boldSystemFont(ofSize: 12)
+    label.textColor = .white
+    return label
+  }()
+  
+  let optionLabel5: UILabel = {
+    let label = UILabel()
+    label.textColor = .black
+    label.backgroundColor = .orange
+    label.text = "정비소"
+    label.textAlignment = .center
+    label.font = UIFont.boldSystemFont(ofSize: 12)
+    label.textColor = .white
+    return label
+  }()
 
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -70,16 +112,12 @@ class GasStationCell: UITableViewCell {
   }
   
   func setupViews() {
-    
-    
-    
-    
-    let stackView = UIStackView(arrangedSubviews: [optionLabel, distanceLabel, optionLabel, distanceLabel])
+    let stackView = UIStackView(arrangedSubviews: [optionLabel1, optionLabel2, optionLabel3, optionLabel4, optionLabel5])
     stackView.axis = .horizontal
-    stackView.alignment = .fill
+    stackView.alignment = .leading
     stackView.spacing = 8
     stackView.backgroundColor = .purple
-    stackView.distribution = .fillEqually
+    stackView.distribution = .fill
     
     addSubview(stationImageView)
     addSubview(titleLabel)
@@ -94,13 +132,13 @@ class GasStationCell: UITableViewCell {
     stationImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
     
     priceLabel.translatesAutoresizingMaskIntoConstraints = false
-    priceLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
+    priceLabel.bottomAnchor.constraint(equalTo: centerYAnchor, constant: -4).isActive = true
     priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 8).isActive = true
     priceLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
     priceLabel.heightAnchor.constraint(equalToConstant: 22).isActive = true
     
     distanceLabel.translatesAutoresizingMaskIntoConstraints = false
-    distanceLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16).isActive = true
+    distanceLabel.topAnchor.constraint(equalTo: centerYAnchor, constant: 4).isActive = true
     distanceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 8).isActive = true
     distanceLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
     distanceLabel.heightAnchor.constraint(equalToConstant: 22).isActive = true
@@ -110,26 +148,12 @@ class GasStationCell: UITableViewCell {
     titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
     titleLabel.trailingAnchor.constraint(equalTo: priceLabel.leadingAnchor, constant: -8).isActive = true
     titleLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 120).isActive = true
-    titleLabel.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: 8).isActive = true
+    titleLabel.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: 0).isActive = true
     
     stackView.translatesAutoresizingMaskIntoConstraints = false
     stackView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
-    stackView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor).isActive = true
+    stackView.trailingAnchor.constraint(lessThanOrEqualTo: titleLabel.trailingAnchor).isActive = true
     stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
-
-    
-    
-    
-//    stationImageView.anchor(top: nil, leading: contentView.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 0, left: 16, bottom: 0, right: 0), size: CGSize(width: 40, height: 40))
-//    stationImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-//
-//    titleLabel.anchor(top: topAnchor, leading: stationImageView.trailingAnchor, bottom: stackView.topAnchor, trailing: priceLabel.leadingAnchor, padding: .init(top: 0, left: 8, bottom: 0, right: 8), size: CGSize(width: 200, height: 22))
-//    stackView.anchor(top: titleLabel.bottomAnchor, leading: stationImageView.trailingAnchor, bottom: bottomAnchor, trailing: priceLabel.leadingAnchor, padding: .init(top: 0, left: 0, bottom: 8, right: 8), size: CGSize(width: 200, height: 22))
-//
-//    priceLabel.anchor(top: topAnchor, leading: titleLabel.trailingAnchor, bottom: distanceLabel.topAnchor, trailing: contentView.trailingAnchor, padding: .init(top: 8, left: 8, bottom: 0, right: 0), size: CGSize(width: 200, height: 22))
-//
-//    distanceLabel.anchor(top: priceLabel.bottomAnchor, leading: titleLabel.trailingAnchor, bottom: bottomAnchor, trailing: contentView.trailingAnchor, padding: .init(top: 0, left: 8, bottom: 8, right: 0), size: CGSize(width: 200, height: 22))
-
   }
   
 }
