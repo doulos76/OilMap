@@ -16,7 +16,7 @@ struct AvgSigunPrice: Decodable {
 }
 
 struct AvgSigunPriceResult: Decodable {
-  let oil: AvgSigunPriceOil
+  let oil: [AvgSigunPriceOil]
   enum CodingKeys: String, CodingKey {
     case oil = "OIL"
   }

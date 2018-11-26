@@ -33,6 +33,7 @@
 		B5BBC66E21ABD16D00006A62 /* AvgSidoPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC66D21ABD16D00006A62 /* AvgSidoPrice.swift */; };
 		B5BBC67021ABD7D600006A62 /* AvgSigunPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC66F21ABD7D600006A62 /* AvgSigunPrice.swift */; };
 		B5BBC67221ABE00100006A62 /* AvgRecentPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC67121ABE00100006A62 /* AvgRecentPrice.swift */; };
+		B5BBC67421ABE37100006A62 /* AvgLastWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC67321ABE37100006A62 /* AvgLastWeek.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		B5BBC66D21ABD16D00006A62 /* AvgSidoPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvgSidoPrice.swift; sourceTree = "<group>"; };
 		B5BBC66F21ABD7D600006A62 /* AvgSigunPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvgSigunPrice.swift; sourceTree = "<group>"; };
 		B5BBC67121ABE00100006A62 /* AvgRecentPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvgRecentPrice.swift; sourceTree = "<group>"; };
+		B5BBC67321ABE37100006A62 /* AvgLastWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvgLastWeek.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 				B5BBC66D21ABD16D00006A62 /* AvgSidoPrice.swift */,
 				B5BBC66F21ABD7D600006A62 /* AvgSigunPrice.swift */,
 				B5BBC67121ABE00100006A62 /* AvgRecentPrice.swift */,
+				B5BBC67321ABE37100006A62 /* AvgLastWeek.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 			files = (
 				B52A316521A6CD2700764B39 /* CustomNavigationBarHeaderView.swift in Sources */,
 				B5A9E3C621ABA0AA00507440 /* API.swift in Sources */,
+				B5BBC67421ABE37100006A62 /* AvgLastWeek.swift in Sources */,
 				B51BB5D521A2C09100F852D2 /* RadiusCircularButton.swift in Sources */,
 				B5BBC66E21ABD16D00006A62 /* AvgSidoPrice.swift in Sources */,
 				B5B71A43219D3971008D8243 /* ViewController.swift in Sources */,
