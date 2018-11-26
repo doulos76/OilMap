@@ -25,7 +25,7 @@ struct AvgRecentPriceResult: Decodable {
 struct AvgRecentPriceOil: Decodable {
   let date: String
   let productCode: ProductCode
-  let price: String
+  let price: Int
   
   enum CodingKeys: String, CodingKey {
     case date = "DATE"

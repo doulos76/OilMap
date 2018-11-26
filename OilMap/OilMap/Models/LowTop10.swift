@@ -24,7 +24,7 @@ struct LowTop10Result: Decodable {
 
 struct LowTop10Oil: Decodable {
   let uniId: String
-  let price: String
+  let price: Int
   let pollDivCode: PollDivCode
   let oilStationName: String
   let vanAddress: String

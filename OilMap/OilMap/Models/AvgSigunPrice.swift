@@ -26,7 +26,7 @@ struct AvgSigunPriceOil: Decodable {
   let sigunCode: String
   let sigunName: String
   let productCode: ProductCode
-  let price: String
+  let price: Int
   let diff: String
   
   enum CodingKeys: String, CodingKey {

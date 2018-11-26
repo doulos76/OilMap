@@ -38,6 +38,9 @@
 		B5BBC67821ABE92300006A62 /* PollDivCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC67721ABE92300006A62 /* PollDivCode.swift */; };
 		B5BBC67A21ABE94600006A62 /* ProductCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC67921ABE94600006A62 /* ProductCode.swift */; };
 		B5BBC67C21ABEAB300006A62 /* AroundAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC67B21ABEAB300006A62 /* AroundAll.swift */; };
+		B5BBC67E21AC06C100006A62 /* DetailById.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC67D21AC06C100006A62 /* DetailById.swift */; };
+		B5BBC68021AC1CBE00006A62 /* AreaCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC67F21AC1CBE00006A62 /* AreaCode.swift */; };
+		B5BBC68221AC1E4E00006A62 /* SearchByName.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC68121AC1E4E00006A62 /* SearchByName.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +77,9 @@
 		B5BBC67721ABE92300006A62 /* PollDivCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollDivCode.swift; sourceTree = "<group>"; };
 		B5BBC67921ABE94600006A62 /* ProductCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCode.swift; sourceTree = "<group>"; };
 		B5BBC67B21ABEAB300006A62 /* AroundAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AroundAll.swift; sourceTree = "<group>"; };
+		B5BBC67D21AC06C100006A62 /* DetailById.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailById.swift; sourceTree = "<group>"; };
+		B5BBC67F21AC1CBE00006A62 /* AreaCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaCode.swift; sourceTree = "<group>"; };
+		B5BBC68121AC1E4E00006A62 /* SearchByName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchByName.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +185,9 @@
 				B5BBC67321ABE37100006A62 /* AvgLastWeek.swift */,
 				B5BBC67521ABE64500006A62 /* LowTop10.swift */,
 				B5BBC67B21ABEAB300006A62 /* AroundAll.swift */,
+				B5BBC67D21AC06C100006A62 /* DetailById.swift */,
+				B5BBC67F21AC1CBE00006A62 /* AreaCode.swift */,
+				B5BBC68121AC1E4E00006A62 /* SearchByName.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -290,7 +299,10 @@
 				B5BBC67A21ABE94600006A62 /* ProductCode.swift in Sources */,
 				B555A179219E05BE0006F9D4 /* SearchController.swift in Sources */,
 				B53E1563219EA06800A7D4A9 /* CustomTextField.swift in Sources */,
+				B5BBC68021AC1CBE00006A62 /* AreaCode.swift in Sources */,
 				B51BB5D321A2BC9400F852D2 /* RadiusCell.swift in Sources */,
+				B5BBC68221AC1E4E00006A62 /* SearchByName.swift in Sources */,
+				B5BBC67E21AC06C100006A62 /* DetailById.swift in Sources */,
 				B5B71A41219D3971008D8243 /* AppDelegate.swift in Sources */,
 				B51B940521A3E63F00BE346B /* GasStationCell.swift in Sources */,
 				B5BBC67C21ABEAB300006A62 /* AroundAll.swift in Sources */,

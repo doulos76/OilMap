@@ -26,7 +26,7 @@ struct AvgAllPriceOil: Decodable {
   let tradeDate: String   // 해당일자
   let productCode: String // 제품 구분 코드
   let productName: String // 제품명
-  let price: String       // 평균가격
+  let price: Int       // 평균가격
   let diff: String        // 전일대비 등라값
   
   enum CodkingKeys: String, CodingKey {

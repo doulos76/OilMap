@@ -28,7 +28,7 @@ struct AvgLastWeekOil: Decodable {
   let endDate: String
   let areaCode: String
   let productCode: ProductCode
-  let price: String
+  let price: Int
   
   enum CodingKeys: String, CodingKey {
     case week = "WEEK"
