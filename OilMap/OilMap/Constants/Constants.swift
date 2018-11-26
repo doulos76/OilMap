@@ -52,3 +52,4 @@ let SEARCH_BY_NAME = BASE_URL_STRING + "searchByName.do"
 typealias AvgAllPriceResponseCompletion = (AvgAllPrice?) -> Void
 typealias AvgSidoPriceResponseCompletion = (AvgSidoPrice?) -> Void
 typealias AvgSigunPriceResponseCompletion = (AvgSigunPrice?) -> Void
+typealias AvgRecentPriceResponseCompletion = (AvgRecentPrice?) -> Void

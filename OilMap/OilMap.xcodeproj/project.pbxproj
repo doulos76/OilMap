@@ -32,6 +32,7 @@
 		B5BBC66C21ABCCA600006A62 /* AvgAllPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC66B21ABCCA600006A62 /* AvgAllPrice.swift */; };
 		B5BBC66E21ABD16D00006A62 /* AvgSidoPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC66D21ABD16D00006A62 /* AvgSidoPrice.swift */; };
 		B5BBC67021ABD7D600006A62 /* AvgSigunPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC66F21ABD7D600006A62 /* AvgSigunPrice.swift */; };
+		B5BBC67221ABE00100006A62 /* AvgRecentPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC67121ABE00100006A62 /* AvgRecentPrice.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		B5BBC66B21ABCCA600006A62 /* AvgAllPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvgAllPrice.swift; sourceTree = "<group>"; };
 		B5BBC66D21ABD16D00006A62 /* AvgSidoPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvgSidoPrice.swift; sourceTree = "<group>"; };
 		B5BBC66F21ABD7D600006A62 /* AvgSigunPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvgSigunPrice.swift; sourceTree = "<group>"; };
+		B5BBC67121ABE00100006A62 /* AvgRecentPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvgRecentPrice.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 				B5BBC66B21ABCCA600006A62 /* AvgAllPrice.swift */,
 				B5BBC66D21ABD16D00006A62 /* AvgSidoPrice.swift */,
 				B5BBC66F21ABD7D600006A62 /* AvgSigunPrice.swift */,
+				B5BBC67121ABE00100006A62 /* AvgRecentPrice.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				B51BB5CD21A26C2F00F852D2 /* CustomLabel.swift in Sources */,
 				B51B940721A3F18500BE346B /* SelectSortListView.swift in Sources */,
 				B5BBC66C21ABCCA600006A62 /* AvgAllPrice.swift in Sources */,
+				B5BBC67221ABE00100006A62 /* AvgRecentPrice.swift in Sources */,
 				B51BB5CF21A28BED00F852D2 /* RectangleCustomButton.swift in Sources */,
 				B5B71A58219D3E14008D8243 /* UIViewExtensions.swift in Sources */,
 				B51B940321A3E34000BE346B /* GasStationListController.swift in Sources */,
