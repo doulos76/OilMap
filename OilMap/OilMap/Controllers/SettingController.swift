@@ -176,7 +176,7 @@ extension SettingController: UIViewControllerTransitioningDelegate, UIViewContro
 
     if isPresenting == true {
       containerView.addSubview(toVC.view)
-      
+
       headerView.frame.origin.y += tableViewHeight + 100
 
       tableView.frame.origin.y += tableViewHeight

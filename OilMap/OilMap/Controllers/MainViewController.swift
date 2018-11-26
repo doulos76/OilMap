@@ -114,10 +114,28 @@ class MainViewController: UIViewController {
     button.backgroundColor = UIColor.customOrangeColor
     button.layer.cornerRadius = 22
 //    button.addTarget(self, action: #selector(displaySettingsAViewController), for: .touchUpInside)
-    button.addTarget(self, action: #selector(displaySettingsViewController), for: .touchUpInside)
+//    button.addTarget(self, action: #selector(displaySettingsViewController), for: .touchUpInside)
 //    button.addTarget(self, action: #selector(moveToSettingController), for: .touchUpInside)
+    button.addTarget(self, action: #selector(callSettingController), for: .touchUpInside)
     return button
   }()
+  
+  let settingController = SettingController()
+  let settingMenuHeight: CGFloat = 800
+  
+  
+  @objc func callSettingController() {
+    print("call SettingsController")
+    // initial position
+    settingController.view.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: view.frame.height)
+    let mainWindow = UIApplication.shared.keyWindow
+    mainWindow?.addSubview(settingController.view)
+    
+    UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+      self.settingController.view.transform = CGAffineTransform(translationX: 0, y: -self.settingMenuHeight)
+    })
+    addChild(settingController)
+  }
   
   @objc func displaySettingsViewController() {
     handleMenuTouched()
@@ -162,6 +180,8 @@ class MainViewController: UIViewController {
     return textField
   }()
   
+  var menuButtonBottomConstraintSize: CGFloat = 150
+  
   var menuIsExpanded: Bool = false {
     didSet {
       let menuButtons = [displayListButton, currentLocationButton, searchButton, settingButton]
@@ -193,12 +213,7 @@ class MainViewController: UIViewController {
       }
     }
   }
-  
-  //  var coordinateLabel: String {
-  //    didSet {
-  //
-  //    }
-  //  }
+
   
   private let locationManager = CLLocationManager()
   
@@ -229,6 +244,30 @@ class MainViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    view.layoutIfNeeded()
+  }
+  
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    super.viewWillTransition(to: size, with: coordinator)
+    
+  }
+  
+  override func viewWillLayoutSubviews() {
+    super.viewWillLayoutSubviews()
+    setupViews()
+  }
+  
+  override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+    super.willTransition(to: newCollection, with: coordinator)
+    
+    switch (newCollection.verticalSizeClass, newCollection.horizontalSizeClass) {
+    case (.compact, .compact):
+      menuButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 20).isActive = true
+    case (.compact, .regular):
+      menuButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 120).isActive = true
+    default:
+      menuButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 120).isActive = true
+    }
     view.layoutIfNeeded()
   }
   
@@ -274,13 +313,14 @@ class MainViewController: UIViewController {
     locationManager.stopUpdatingLocation()
   }
   
+  
   // MARK:- Setup Works
   fileprivate func setupViews() {
     view.addSubview(mapView)
     mapView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
     
     view.addSubview(menuButton)
-    menuButton.anchor(top: nil, leading: nil, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 150, right: 16), size: CGSize(width: 52, height: 52))
+    menuButton.anchor(top: nil, leading: nil, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: menuButtonBottomConstraintSize, right: 16), size: CGSize(width: 52, height: 52))
     menuButton.widthAnchor.constraint(equalTo: menuButton.heightAnchor).isActive = true
     
     let menuButtons = [displayListButton, currentLocationButton, searchButton, settingButton]
