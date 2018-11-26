@@ -34,6 +34,9 @@
 		B5BBC67021ABD7D600006A62 /* AvgSigunPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC66F21ABD7D600006A62 /* AvgSigunPrice.swift */; };
 		B5BBC67221ABE00100006A62 /* AvgRecentPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC67121ABE00100006A62 /* AvgRecentPrice.swift */; };
 		B5BBC67421ABE37100006A62 /* AvgLastWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC67321ABE37100006A62 /* AvgLastWeek.swift */; };
+		B5BBC67621ABE64500006A62 /* LowTop10.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC67521ABE64500006A62 /* LowTop10.swift */; };
+		B5BBC67821ABE92300006A62 /* PollDivCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC67721ABE92300006A62 /* PollDivCode.swift */; };
+		B5BBC67A21ABE94600006A62 /* ProductCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC67921ABE94600006A62 /* ProductCode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +69,9 @@
 		B5BBC66F21ABD7D600006A62 /* AvgSigunPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvgSigunPrice.swift; sourceTree = "<group>"; };
 		B5BBC67121ABE00100006A62 /* AvgRecentPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvgRecentPrice.swift; sourceTree = "<group>"; };
 		B5BBC67321ABE37100006A62 /* AvgLastWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvgLastWeek.swift; sourceTree = "<group>"; };
+		B5BBC67521ABE64500006A62 /* LowTop10.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowTop10.swift; sourceTree = "<group>"; };
+		B5BBC67721ABE92300006A62 /* PollDivCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollDivCode.swift; sourceTree = "<group>"; };
+		B5BBC67921ABE94600006A62 /* ProductCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,11 +168,14 @@
 		B5B71A55219D3D9B008D8243 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B5BBC67721ABE92300006A62 /* PollDivCode.swift */,
+				B5BBC67921ABE94600006A62 /* ProductCode.swift */,
 				B5BBC66B21ABCCA600006A62 /* AvgAllPrice.swift */,
 				B5BBC66D21ABD16D00006A62 /* AvgSidoPrice.swift */,
 				B5BBC66F21ABD7D600006A62 /* AvgSigunPrice.swift */,
 				B5BBC67121ABE00100006A62 /* AvgRecentPrice.swift */,
 				B5BBC67321ABE37100006A62 /* AvgLastWeek.swift */,
+				B5BBC67521ABE64500006A62 /* LowTop10.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -272,7 +281,10 @@
 				B51B940321A3E34000BE346B /* GasStationListController.swift in Sources */,
 				B51BB5F521A2E1A000F852D2 /* OilTypeCircularButton.swift in Sources */,
 				B555A177219DCD270006F9D4 /* RoundCustomButton.swift in Sources */,
+				B5BBC67821ABE92300006A62 /* PollDivCode.swift in Sources */,
 				B5BBC67021ABD7D600006A62 /* AvgSigunPrice.swift in Sources */,
+				B5BBC67621ABE64500006A62 /* LowTop10.swift in Sources */,
+				B5BBC67A21ABE94600006A62 /* ProductCode.swift in Sources */,
 				B555A179219E05BE0006F9D4 /* SearchController.swift in Sources */,
 				B53E1563219EA06800A7D4A9 /* CustomTextField.swift in Sources */,
 				B51BB5D321A2BC9400F852D2 /* RadiusCell.swift in Sources */,
