@@ -55,3 +55,4 @@ typealias AvgSigunPriceResponseCompletion = (AvgSigunPrice?) -> Void
 typealias AvgRecentPriceResponseCompletion = (AvgRecentPrice?) -> Void
 typealias AvgLastWeekResponseCompletion = (AvgLastWeek?) -> Void
 typealias LowTop10ResponseCompletion = (LowTop10?) -> Void
+typealias AroundAllResponseCompletion = (AroundAll?) -> Void
