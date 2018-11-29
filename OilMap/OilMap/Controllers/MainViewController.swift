@@ -348,7 +348,7 @@ class MainViewController: UIViewController {
     displayStackView.spacing = 20
     view.addSubview(displayStackView)
     
-    displayStackView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 50, left: 20, bottom: 0, right: 20), size: CGSize(width: 0, height: 26))
+    displayStackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets.init(top: 20, left: 20, bottom: 0, right: 20), size: CGSize(width: 0, height: 26))
     
   }
   
