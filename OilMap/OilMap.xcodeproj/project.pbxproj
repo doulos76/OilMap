@@ -21,6 +21,9 @@
 		B54BA75A21AD010200F9CDB2 /* GeoConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54BA75921AD010200F9CDB2 /* GeoConverter.swift */; };
 		B555A177219DCD270006F9D4 /* RoundCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B555A176219DCD270006F9D4 /* RoundCustomButton.swift */; };
 		B555A179219E05BE0006F9D4 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B555A178219E05BE0006F9D4 /* SearchController.swift */; };
+		B57E335F21B0C9D10093FFC6 /* CustomLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57E335E21B0C9D10093FFC6 /* CustomLabelButton.swift */; };
+		B57E336121B0D0B40093FFC6 /* AvgAlllPriceApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57E336021B0D0B40093FFC6 /* AvgAlllPriceApi.swift */; };
+		B580948B21AF80530078F3B3 /* HeaderStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B580948A21AF80530078F3B3 /* HeaderStackView.swift */; };
 		B5A9E3C621ABA0AA00507440 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9E3C521ABA0AA00507440 /* API.swift */; };
 		B5B71A41219D3971008D8243 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B71A40219D3971008D8243 /* AppDelegate.swift */; };
 		B5B71A43219D3971008D8243 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B71A42219D3971008D8243 /* ViewController.swift */; };
@@ -59,6 +62,9 @@
 		B54BA75921AD010200F9CDB2 /* GeoConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoConverter.swift; sourceTree = "<group>"; };
 		B555A176219DCD270006F9D4 /* RoundCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCustomButton.swift; sourceTree = "<group>"; };
 		B555A178219E05BE0006F9D4 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		B57E335E21B0C9D10093FFC6 /* CustomLabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabelButton.swift; sourceTree = "<group>"; };
+		B57E336021B0D0B40093FFC6 /* AvgAlllPriceApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvgAlllPriceApi.swift; sourceTree = "<group>"; };
+		B580948A21AF80530078F3B3 /* HeaderStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderStackView.swift; sourceTree = "<group>"; };
 		B5A9E3C521ABA0AA00507440 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		B5B71A3D219D3971008D8243 /* OilMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OilMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B71A40219D3971008D8243 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				B5A9E3C521ABA0AA00507440 /* API.swift */,
+				B57E336021B0D0B40093FFC6 /* AvgAlllPriceApi.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -180,6 +187,8 @@
 				B51B940421A3E63F00BE346B /* GasStationCell.swift */,
 				B51B940621A3F18500BE346B /* SelectSortListView.swift */,
 				B52A316421A6CD2700764B39 /* CustomNavigationBarHeaderView.swift */,
+				B580948A21AF80530078F3B3 /* HeaderStackView.swift */,
+				B57E335E21B0C9D10093FFC6 /* CustomLabelButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -303,6 +312,7 @@
 				B51BB5CF21A28BED00F852D2 /* RectangleCustomButton.swift in Sources */,
 				B5B71A58219D3E14008D8243 /* UIViewExtensions.swift in Sources */,
 				B51B940321A3E34000BE346B /* GasStationListController.swift in Sources */,
+				B580948B21AF80530078F3B3 /* HeaderStackView.swift in Sources */,
 				B51BB5F521A2E1A000F852D2 /* OilTypeCircularButton.swift in Sources */,
 				B555A177219DCD270006F9D4 /* RoundCustomButton.swift in Sources */,
 				B5BBC67821ABE92300006A62 /* PollDivCode.swift in Sources */,
@@ -317,8 +327,10 @@
 				B5BBC67E21AC06C100006A62 /* DetailById.swift in Sources */,
 				B5B71A41219D3971008D8243 /* AppDelegate.swift in Sources */,
 				B51B940521A3E63F00BE346B /* GasStationCell.swift in Sources */,
+				B57E336121B0D0B40093FFC6 /* AvgAlllPriceApi.swift in Sources */,
 				B5BBC67C21ABEAB300006A62 /* AroundAll.swift in Sources */,
 				B51BB5D121A2A13D00F852D2 /* SettingController.swift in Sources */,
+				B57E335F21B0C9D10093FFC6 /* CustomLabelButton.swift in Sources */,
 				B5B71A5B219D439F008D8243 /* Constants.swift in Sources */,
 				B5B71A5D219D87C1008D8243 /* MainViewController.swift in Sources */,
 			);

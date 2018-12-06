@@ -18,7 +18,7 @@ class SettingController: UIViewController {
   
   lazy var headerView: UIView = {
     let view = UIView()
-    view.backgroundColor = UIColor.red
+    view.backgroundColor = .lightGray
     return view
   }()
   

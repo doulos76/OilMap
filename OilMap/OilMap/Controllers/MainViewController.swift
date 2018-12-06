@@ -12,13 +12,27 @@ import UIKit
 
 class MainViewController: UIViewController {
   
+  // AvgAllPrice
+  var avgAllPriceOils = [AvgAllPriceOil]()
+  var avgAllPriceApi = AvgAllPriceApi()
+  
+  func displayAvgAllPrice() {
+    avgAllPriceApi.getAvgAllPrice { (avgAllPrice) in
+      if let avgAllPrice = avgAllPrice {
+        self.avgAllPriceOils = avgAllPrice.result.oil
+        print("\n================[avgAllPriceOils]================\n")
+        print(self.avgAllPriceOils)        
+       }
+    }
+  }
+  
   // MARK:- Properties
   let oilTypeLabel: CustomLabel = {
     let label = CustomLabel()
     label.text = "휘발유"
     return label
   }()
-  
+
   let currentMapMinimumOilPriceLabel: CustomLabel = {
     let label = CustomLabel()
     label.text = "최저: 1458원"
@@ -44,12 +58,18 @@ class MainViewController: UIViewController {
     button.setTitle("반경: \(5)Km", for: .normal)
     return button
   }()
-  
+
   let moveLocationButton: RectangleCustomButton = {
-    let button = RectangleCustomButton()
+    let button = RectangleCustomButton(type: UIButton.ButtonType.system)
+    button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
     button.setTitle("위치이동: \("ON")", for: .normal)
+    button.addTarget(self, action: #selector(handleLocationLockToggle), for: .touchUpInside)
     return button
   }()
+  
+  @objc func handleLocationLockToggle() {
+    moveLocationButton.setTitle("위치이동: \("OFF")", for: .normal)
+  }
   
   var mapView: MKMapView = {
     let map = MKMapView()
@@ -123,7 +143,6 @@ class MainViewController: UIViewController {
   let settingController = SettingController()
   let settingMenuHeight: CGFloat = 800
   
-  
   @objc func callSettingController() {
     print("call SettingsController")
     // initial position
@@ -171,7 +190,7 @@ class MainViewController: UIViewController {
     button.addTarget(self, action: #selector(searchLocalGasStation), for: .touchUpInside)
     return button
   }()
-  
+
   // searchTextField
   var searchTextField: CustomTextField = {
     let textField = CustomTextField()
@@ -180,7 +199,7 @@ class MainViewController: UIViewController {
     return textField
   }()
   
-  var menuButtonBottomConstraintSize: CGFloat = 150
+  var menuButtonBottomConstraintSize: NSLayoutConstraint!
   
   var menuIsExpanded: Bool = false {
     didSet {
@@ -193,7 +212,7 @@ class MainViewController: UIViewController {
         for (index, button) in menuButtons.enumerated() {
           UIView.animate(withDuration: 0.5, delay: 0.2, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
             button.alpha = 1
-            button.transform = CGAffineTransform(translationX: 0, y: -(30 + button.frame.height) * CGFloat(index + 1))
+            button.transform = CGAffineTransform(translationX: 0, y: -(20 + button.frame.height) * CGFloat(index + 1))
             button.textLable.alpha = 1
             self.searchButton.textLable.isHidden = false
           })
@@ -227,6 +246,7 @@ class MainViewController: UIViewController {
     setupViews()
     startUpdatingLocation()
     mapView.showsUserLocation = true
+    displayAvgAllPrice()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -247,26 +267,19 @@ class MainViewController: UIViewController {
     view.layoutIfNeeded()
   }
   
-  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-    super.viewWillTransition(to: size, with: coordinator)
-    
-  }
-  
   override func viewWillLayoutSubviews() {
     super.viewWillLayoutSubviews()
-    setupViews()
-  }
-  
-  override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-    super.willTransition(to: newCollection, with: coordinator)
-    
-    switch (newCollection.verticalSizeClass, newCollection.horizontalSizeClass) {
-    case (.compact, .compact):
-      menuButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 20).isActive = true
-    case (.compact, .regular):
-      menuButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 120).isActive = true
-    default:
-      menuButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 120).isActive = true
+    let deviceIsLandscape: Bool = UIDevice.current.orientation.isLandscape
+    headerStackView.axis = deviceIsLandscape ? .vertical : .horizontal
+    if deviceIsLandscape == true {
+      headerStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 40).isActive = true
+      menuButtonBottomConstraintSize.constant = -20
+      menuButtonBottomConstraintSize.isActive = true
+    } else {
+      headerStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+      menuButtonBottomConstraintSize.constant = -150
+      menuButtonBottomConstraintSize.isActive = true
+
     }
     view.layoutIfNeeded()
   }
@@ -289,7 +302,7 @@ class MainViewController: UIViewController {
   private func updateCurrentLocation() {
     locationManager.requestLocation()
     let coordinate = mapView.centerCoordinate
-//    coordinateLabel.text = String(format: "위도: %2.4f, 경도: %2.4f", arguments: [coordinate.latitude, coordinate.longitude])
+    coordinateLabel.text = String(format: "위도: %2.4f, 경도: %2.4f", arguments: [coordinate.latitude, coordinate.longitude])
     startUpdatingLocation()
     let center = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
     stopUpdatieLocation()
@@ -313,6 +326,16 @@ class MainViewController: UIViewController {
     locationManager.stopUpdatingLocation()
   }
   
+  let headerStackView: UIStackView = {
+    let stackView = UIStackView()
+    stackView.axis = .horizontal
+    stackView.distribution = .fillProportionally
+    stackView.alignment = .top
+    stackView.spacing = 10
+    stackView.translatesAutoresizingMaskIntoConstraints = false
+    stackView.backgroundColor = .green
+    return stackView
+  }()
   
   // MARK:- Setup Works
   fileprivate func setupViews() {
@@ -320,8 +343,12 @@ class MainViewController: UIViewController {
     mapView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
     
     view.addSubview(menuButton)
-    menuButton.anchor(top: nil, leading: nil, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: menuButtonBottomConstraintSize, right: 16), size: CGSize(width: 52, height: 52))
+    menuButton.translatesAutoresizingMaskIntoConstraints = false
+    menuButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
+    menuButton.widthAnchor.constraint(equalToConstant: 52).isActive = true
     menuButton.widthAnchor.constraint(equalTo: menuButton.heightAnchor).isActive = true
+    menuButtonBottomConstraintSize = menuButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150)
+    menuButtonBottomConstraintSize.isActive = true
     
     let menuButtons = [displayListButton, currentLocationButton, searchButton, settingButton]
     menuButtons.forEach { (button) in
@@ -332,24 +359,33 @@ class MainViewController: UIViewController {
       button.centerXAnchor.constraint(equalTo: menuButton.centerXAnchor).isActive = true
     }
     
+//    view.addSubview(headerStackView)
     let arrangedOilPriceDisplaySubView = [oilTypeLabel, currentMapMinimumOilPriceLabel, nationalAvgOilPriceLabel, nationalMinimumOilPriceLabel]
     let oilPriceDisplayStackView = UIStackView(arrangedSubviews: arrangedOilPriceDisplaySubView)
     oilPriceDisplayStackView.axis = .vertical
     oilPriceDisplayStackView.alignment = .fill
     oilPriceDisplayStackView.distribution = .equalSpacing
     oilPriceDisplayStackView.spacing = 2
-//    view.addSubview(oilPriceDisplayStackView)
+    view.addSubview(oilPriceDisplayStackView)
     
     let arrangedDisplayStackView = [oilPriceDisplayStackView, radiusButton, moveLocationButton]
     let displayStackView = UIStackView(arrangedSubviews: arrangedDisplayStackView)
+    
     displayStackView.axis = .horizontal
     displayStackView.distribution = .fillEqually
     displayStackView.alignment = .top
     displayStackView.spacing = 20
     view.addSubview(displayStackView)
-    
-    displayStackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets.init(top: 20, left: 20, bottom: 0, right: 20), size: CGSize(width: 0, height: 26))
-    
+    headerStackView.addArrangedSubview(oilPriceDisplayStackView)
+    headerStackView.addArrangedSubview(radiusButton)
+    headerStackView.addArrangedSubview(moveLocationButton)
+    view.addSubview(headerStackView)
+    headerStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
+    headerStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
+    headerStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
+    headerStackView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: 100).isActive = true
+    headerStackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets.init(top: 20, left: 20, bottom: 0, right: 20), size: CGSize(width: 0, height: 26))
+
   }
   
   fileprivate func setupNavibationBarUI() {
@@ -377,7 +413,7 @@ class MainViewController: UIViewController {
     searchTextField.bottomAnchor.constraint(equalTo: menuButton.topAnchor, constant: -177).isActive = true
     
     UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.2, options: .curveEaseInOut, animations: {
-      self.searchButton.textLable.isHidden = true
+//      self.searchButton.textLable.isHidden = true
       self.searchTextField.isHidden = false
       self.searchTextField.alpha = 1
       self.searchTextField.transform = CGAffineTransform(translationX: -6, y: 0)
@@ -388,7 +424,7 @@ class MainViewController: UIViewController {
   
   @objc func searchLocalGasStation() {
     print("Searching Local GasStation")
-    searchButton.textLable.isHidden = false
+//    searchButton.textLable.isHidden = false
     setupTextField()
     print(searchButton.frame)
     print("searchTextField: ",searchTextField.frame)
