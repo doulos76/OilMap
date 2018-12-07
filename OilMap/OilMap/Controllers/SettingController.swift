@@ -4,7 +4,7 @@
 //
 //  Created by dave76 on 19/11/2018.
 //  Copyright © 2018 dave76. All rights reserved.
-//
+//s
 
 import UIKit
 
@@ -13,6 +13,7 @@ class SettingController: UIViewController {
   lazy var backdropView: UIView = {
     let bdView = UIView(frame: self.view.bounds)
     bdView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+    bdView.translatesAutoresizingMaskIntoConstraints = false
     return bdView
   }()
   
@@ -39,9 +40,7 @@ class SettingController: UIViewController {
     button.backgroundColor = .green
     return button
   }()
-  
-  
-  
+
   let tableView = UITableView()
   let tableViewHeight = UIScreen.main.bounds.height * 0.65 /// 2
   var isPresenting = false
@@ -59,9 +58,32 @@ class SettingController: UIViewController {
   let cellId = "cellId"
   let sectionItems = ["반경", "유종선택", "검색 상표 입력", "카드 할인 입력"]
   
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .clear
+
+    setupNavigationController()
+    setupTableView()
+    setupViews()
+    setupGesture()
+  }
+  
+  // MARK:- Setup Work
+  fileprivate func setupTableView() {
+    tableView.dataSource = self
+    tableView.delegate = self
+    tableView.register(RadiusCell.self, forCellReuseIdentifier: cellId)
+  }
+  
+  fileprivate func setupGesture() {
+    let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleClose))
+    view.addGestureRecognizer(panGesture)
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SettingController.handleClose))
+    view.addGestureRecognizer(tapGesture)
+  }
+  
+  fileprivate func setupViews() {
     view.addSubview(backdropView)
     view.addSubview(headerView)
     view.addSubview(tableView)
@@ -80,9 +102,6 @@ class SettingController: UIViewController {
     headerViewcloseButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     
     
-    tableView.dataSource = self
-    tableView.delegate = self
-    
     headerView.translatesAutoresizingMaskIntoConstraints = false
     headerView.heightAnchor.constraint(equalToConstant: 100).isActive = true
     headerView.bottomAnchor.constraint(equalTo: tableView.topAnchor).isActive = true
@@ -95,17 +114,8 @@ class SettingController: UIViewController {
     tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
     tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-    
-    tableView.register(RadiusCell.self, forCellReuseIdentifier: cellId)
-    setupNavigationController()
-    let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleClose))
-    view.addGestureRecognizer(panGesture)
-    
-    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SettingController.handleClose))
-    view.addGestureRecognizer(tapGesture)
   }
   
-  // MARK:- Setup Work
   fileprivate func setupNavigationController() {
     navigationItem.title = "Settings"
     navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "iconMenuArrowDown")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleClose))

@@ -12,6 +12,13 @@ import UIKit
 
 class MainViewController: UIViewController {
   
+  lazy var darkCoverView: UIView = {
+    let view = UIView(frame: self.view.bounds)
+    view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+    view.translatesAutoresizingMaskIntoConstraints = false
+    return view
+  }()
+  
   // AvgAllPrice
   var avgAllPriceOils = [AvgAllPriceOil]()
   var avgAllPriceApi = AvgAllPriceApi()
@@ -21,7 +28,7 @@ class MainViewController: UIViewController {
       if let avgAllPrice = avgAllPrice {
         self.avgAllPriceOils = avgAllPrice.result.oil
         print("\n================[avgAllPriceOils]================\n")
-        print(self.avgAllPriceOils)        
+        print(self.avgAllPriceOils)
        }
     }
   }
@@ -77,7 +84,7 @@ class MainViewController: UIViewController {
   }()
   
   /// menu button
-  let menuButton: RoundCustomButton = {
+  lazy var menuButton: RoundCustomButton = {
     let button = RoundCustomButton(type: .system)
     button.textLable.text = "메뉴"
     button.setImage(UIImage(named: "arrowUpMenuButton"), for: .normal)
@@ -97,7 +104,7 @@ class MainViewController: UIViewController {
   }()
   
   /// list view button
-  var displayListButton: RoundCustomButton = {
+  lazy var displayListButton: RoundCustomButton = {
     let button = RoundCustomButton(type: .system)
     button.textLable.text = "주유소 목록"
     button.setImage(UIImage(named: "iconMenuList"), for: .normal)
@@ -116,7 +123,7 @@ class MainViewController: UIViewController {
   }
   
   /// current location button
-  var currentLocationButton: RoundCustomButton = {
+  lazy var currentLocationButton: RoundCustomButton = {
     let button = RoundCustomButton(type: .system)
     button.textLable.text = "현재 위치"
     button.setImage(UIImage(named: "iconMenuLocation"), for: .normal)
@@ -127,7 +134,7 @@ class MainViewController: UIViewController {
   }()
   
   // setting button
-  var settingButton: RoundCustomButton = {
+  lazy var settingButton: RoundCustomButton = {
     let button = RoundCustomButton(type: .system)
     button.textLable.text = "설정"
     button.setImage(UIImage(named: "iconMenuSetting"), for: .normal)
@@ -136,12 +143,31 @@ class MainViewController: UIViewController {
 //    button.addTarget(self, action: #selector(displaySettingsAViewController), for: .touchUpInside)
 //    button.addTarget(self, action: #selector(displaySettingsViewController), for: .touchUpInside)
 //    button.addTarget(self, action: #selector(moveToSettingController), for: .touchUpInside)
-    button.addTarget(self, action: #selector(callSettingController), for: .touchUpInside)
+//    button.addTarget(self, action: #selector(callSettingController), for: .touchUpInside)
+    button.addTarget(self, action: #selector(moveToSettingsViewController), for: .touchUpInside)
     return button
   }()
   
+  @objc func moveToSettingsViewController() {
+    print("Move to Setting View Controller")
+    let navController = UINavigationController(rootViewController: settingsViewController)
+    navController.view.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: view.frame.height)
+
+    let mainWindow = UIApplication.shared.keyWindow
+    mainWindow?.addSubview(navController.view)
+    view.addSubview(darkCoverView)
+    UIView.animate(withDuration: 0.5, animations: {
+      navController.view.transform = CGAffineTransform(translationX: 0, y: -(self.view.frame.height * 0.8))
+      self.darkCoverView.alpha = 1
+    }) { (_) in
+      //
+    }
+    addChild(navController)
+  }
+  
+  let settingsViewController = SettingsViewController()
   let settingController = SettingController()
-  let settingMenuHeight: CGFloat = 800
+  let settingMenuHeight: CGFloat = 850
   
   @objc func callSettingController() {
     print("call SettingsController")
@@ -200,6 +226,7 @@ class MainViewController: UIViewController {
   }()
   
   var menuButtonBottomConstraintSize: NSLayoutConstraint!
+  var searchTextFieldYConstraintConstant: CGFloat?
   
   var menuIsExpanded: Bool = false {
     didSet {
@@ -212,19 +239,22 @@ class MainViewController: UIViewController {
         for (index, button) in menuButtons.enumerated() {
           UIView.animate(withDuration: 0.5, delay: 0.2, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
             button.alpha = 1
-            button.transform = CGAffineTransform(translationX: 0, y: -(20 + button.frame.height) * CGFloat(index + 1))
+            let offsetY = -(20 + button.frame.height) * CGFloat(index + 1)
+            button.transform = CGAffineTransform(translationX: 0, y: offsetY)
             button.textLable.alpha = 1
             self.searchButton.textLable.isHidden = false
+            self.searchTextFieldYConstraintConstant = offsetY * 3/4
           })
         }
       } else {
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: 0.5, animations: {
           self.menuButton.imageView?.transform = .identity
           print("menu is not expended")
         })
         
         for button in menuButtons {
-          UIView.animate(withDuration: 0.5, delay: 0.2, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.2, options: .curveEaseInOut, animations: {
+          UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+            button.textLable.alpha = 0
             button.transform = .identity
             button.alpha = 0
           })
@@ -232,20 +262,20 @@ class MainViewController: UIViewController {
       }
     }
   }
-
   
   private let locationManager = CLLocationManager()
   
   // MARK:- View Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    locationManager.delegate = self
-    searchTextField.delegate = self
     view.backgroundColor = .white
+    locationManager.delegate = self
+    mapView.showsUserLocation = true
+    searchTextField.delegate = self
+    
     setupNavibationBarUI()
     setupViews()
     startUpdatingLocation()
-    mapView.showsUserLocation = true
     displayAvgAllPrice()
   }
   
@@ -385,7 +415,6 @@ class MainViewController: UIViewController {
     headerStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
     headerStackView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: 100).isActive = true
     headerStackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets.init(top: 20, left: 20, bottom: 0, right: 20), size: CGSize(width: 0, height: 26))
-
   }
   
   fileprivate func setupNavibationBarUI() {
@@ -407,13 +436,14 @@ class MainViewController: UIViewController {
   
   fileprivate func setupTextField() {
     view.addSubview(searchTextField)
+    searchTextField.becomeFirstResponder()
     searchTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
     searchTextField.trailingAnchor.constraint(equalTo: menuButton.leadingAnchor, constant: 0).isActive = true
     searchTextField.heightAnchor.constraint(equalToConstant: 30).isActive = true
-    searchTextField.bottomAnchor.constraint(equalTo: menuButton.topAnchor, constant: -177).isActive = true
-    
+    searchTextField.centerYAnchor.constraint(equalTo: menuButton.centerYAnchor, constant: searchTextFieldYConstraintConstant ?? 0).isActive = true
+
     UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.2, options: .curveEaseInOut, animations: {
-//      self.searchButton.textLable.isHidden = true
+      self.searchButton.textLable.isHidden = true
       self.searchTextField.isHidden = false
       self.searchTextField.alpha = 1
       self.searchTextField.transform = CGAffineTransform(translationX: -6, y: 0)
@@ -474,7 +504,7 @@ extension MainViewController: UITextFieldDelegate {
       self.searchTextField.alpha = 0
       self.menuIsExpanded = false
     }) { (_) in
-      //
+      self.searchTextField.text = ""
     }
     return true
   }

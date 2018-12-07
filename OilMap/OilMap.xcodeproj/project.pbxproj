@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B51A44C421BA0A130047049F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51A44C321BA0A130047049F /* SettingsViewController.swift */; };
 		B51B940321A3E34000BE346B /* GasStationListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51B940221A3E34000BE346B /* GasStationListController.swift */; };
 		B51B940521A3E63F00BE346B /* GasStationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51B940421A3E63F00BE346B /* GasStationCell.swift */; };
 		B51B940721A3F18500BE346B /* SelectSortListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51B940621A3F18500BE346B /* SelectSortListView.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B51A44C321BA0A130047049F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B51B940221A3E34000BE346B /* GasStationListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasStationListController.swift; sourceTree = "<group>"; };
 		B51B940421A3E63F00BE346B /* GasStationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasStationCell.swift; sourceTree = "<group>"; };
 		B51B940621A3F18500BE346B /* SelectSortListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSortListView.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				B555A178219E05BE0006F9D4 /* SearchController.swift */,
 				B51BB5D021A2A13D00F852D2 /* SettingController.swift */,
 				B51B940221A3E34000BE346B /* GasStationListController.swift */,
+				B51A44C321BA0A130047049F /* SettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				B57E335F21B0C9D10093FFC6 /* CustomLabelButton.swift in Sources */,
 				B5B71A5B219D439F008D8243 /* Constants.swift in Sources */,
 				B5B71A5D219D87C1008D8243 /* MainViewController.swift in Sources */,
+				B51A44C421BA0A130047049F /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
