@@ -140,7 +140,6 @@ class MainViewController: UIViewController {
     button.setImage(UIImage(named: "iconMenuSetting"), for: .normal)
     button.backgroundColor = UIColor.customOrangeColor
     button.layer.cornerRadius = 22
-//    button.addTarget(self, action: #selector(displaySettingsAViewController), for: .touchUpInside)
 //    button.addTarget(self, action: #selector(displaySettingsViewController), for: .touchUpInside)
 //    button.addTarget(self, action: #selector(moveToSettingController), for: .touchUpInside)
 //    button.addTarget(self, action: #selector(callSettingController), for: .touchUpInside)
@@ -190,13 +189,7 @@ class MainViewController: UIViewController {
     settingController.modalPresentationStyle = .custom
     present(settingController, animated: true, completion: nil)
   }
-  
-  @objc func displaySettingsAViewController() {
-    let vc = ViewControllerB()
-    vc.modalPresentationStyle = .custom
-    present(vc, animated: true, completion: nil)
-  }
-  
+
   @objc func moveToSettingController() {
     handleMenuTouched()
     print("moveToSettingController")

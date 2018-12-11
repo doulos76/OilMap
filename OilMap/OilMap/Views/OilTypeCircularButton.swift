@@ -9,16 +9,14 @@
 import UIKit
 
 class OilTypeCircularButton: RadiusCircularButton {
-
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     isSelected = false
-    setTitleColor(.black, for: .normal)
-    titleLabel?.font = UIFont.init(name: "AppleSDGothicNeo-Bold", size: 14)
-    setImage(UIImage(named: "iconSetUzong"), for: .normal)
+    setImage(UIImage(named: "iconOilGun")?.withRenderingMode(.alwaysOriginal), for: .normal)
     backgroundColor = .lightGray
     tintColor = .clear
-    layer.cornerRadius = bounds.width / 2
+    layer.cornerRadius = 28
     layer.masksToBounds = true
     addTarget(self, action: #selector(buttonTouched), for: .touchUpInside)
   }
@@ -26,11 +24,10 @@ class OilTypeCircularButton: RadiusCircularButton {
   @objc override func buttonTouched() {
     if isSelected == true {
       backgroundColor = .lightGray
-      setTitleColor(.darkGray, for: .normal)
+//      setTitleColor(.darkGray, for: .normal)
       isSelected = false
     } else {
-      backgroundColor = .black
-      setTitleColor(.white, for: .normal)
+      backgroundColor = #colorLiteral(red: 0.9603450894, green: 0.6483944058, blue: 0.1405650675, alpha: 1)
       isSelected = true
     }
   }

@@ -51,6 +51,5 @@ class CustomNavigationBarHeaderView: UIView {
     closeButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 8).isActive = true
     closeButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
     closeButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-
   }
 }

@@ -46,12 +46,12 @@ class RadiusCell: UITableViewCell {
     let arrangedSubviews = [oneKmCircleButton, threeKmCircleButton, fiveKmCircleButton, tenKmCircleButton]
     let stackView = UIStackView(arrangedSubviews: arrangedSubviews)
     addSubview(stackView)
-    
     stackView.distribution = .equalCentering
     stackView.alignment = .center
+    stackView.spacing = 20
     stackView.axis = .horizontal
-    stackView.anchor(top: nil, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 0, left: 20, bottom: 0, right: 20), size: CGSize.zero)
-    stackView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+    stackView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 16, left: 16, bottom: 0, right: 0), size: CGSize.zero)
+    //stackView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
   }
   
   required init?(coder aDecoder: NSCoder) {

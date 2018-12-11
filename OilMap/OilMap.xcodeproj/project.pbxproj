@@ -22,12 +22,13 @@
 		B54BA75A21AD010200F9CDB2 /* GeoConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54BA75921AD010200F9CDB2 /* GeoConverter.swift */; };
 		B555A177219DCD270006F9D4 /* RoundCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B555A176219DCD270006F9D4 /* RoundCustomButton.swift */; };
 		B555A179219E05BE0006F9D4 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B555A178219E05BE0006F9D4 /* SearchController.swift */; };
+		B576F88721BDED860000FE95 /* OilTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B576F88621BDED860000FE95 /* OilTypeCell.swift */; };
+		B576F8A921BE28260000FE95 /* CustomVerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B576F8A821BE28260000FE95 /* CustomVerticalStackView.swift */; };
 		B57E335F21B0C9D10093FFC6 /* CustomLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57E335E21B0C9D10093FFC6 /* CustomLabelButton.swift */; };
 		B57E336121B0D0B40093FFC6 /* AvgAlllPriceApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57E336021B0D0B40093FFC6 /* AvgAlllPriceApi.swift */; };
 		B580948B21AF80530078F3B3 /* HeaderStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B580948A21AF80530078F3B3 /* HeaderStackView.swift */; };
 		B5A9E3C621ABA0AA00507440 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9E3C521ABA0AA00507440 /* API.swift */; };
 		B5B71A41219D3971008D8243 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B71A40219D3971008D8243 /* AppDelegate.swift */; };
-		B5B71A43219D3971008D8243 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B71A42219D3971008D8243 /* ViewController.swift */; };
 		B5B71A46219D3971008D8243 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B71A44219D3971008D8243 /* Main.storyboard */; };
 		B5B71A48219D3972008D8243 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5B71A47219D3972008D8243 /* Assets.xcassets */; };
 		B5B71A4B219D3972008D8243 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B71A49219D3972008D8243 /* LaunchScreen.storyboard */; };
@@ -64,13 +65,14 @@
 		B54BA75921AD010200F9CDB2 /* GeoConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoConverter.swift; sourceTree = "<group>"; };
 		B555A176219DCD270006F9D4 /* RoundCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCustomButton.swift; sourceTree = "<group>"; };
 		B555A178219E05BE0006F9D4 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		B576F88621BDED860000FE95 /* OilTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilTypeCell.swift; sourceTree = "<group>"; };
+		B576F8A821BE28260000FE95 /* CustomVerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVerticalStackView.swift; sourceTree = "<group>"; };
 		B57E335E21B0C9D10093FFC6 /* CustomLabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabelButton.swift; sourceTree = "<group>"; };
 		B57E336021B0D0B40093FFC6 /* AvgAlllPriceApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvgAlllPriceApi.swift; sourceTree = "<group>"; };
 		B580948A21AF80530078F3B3 /* HeaderStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderStackView.swift; sourceTree = "<group>"; };
 		B5A9E3C521ABA0AA00507440 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		B5B71A3D219D3971008D8243 /* OilMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OilMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B71A40219D3971008D8243 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B5B71A42219D3971008D8243 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B5B71A45219D3971008D8243 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B5B71A47219D3972008D8243 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5B71A4A219D3972008D8243 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -167,7 +169,6 @@
 		B5B71A53219D3D97008D8243 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B5B71A42219D3971008D8243 /* ViewController.swift */,
 				B5B71A5C219D87C1008D8243 /* MainViewController.swift */,
 				B555A178219E05BE0006F9D4 /* SearchController.swift */,
 				B51BB5D021A2A13D00F852D2 /* SettingController.swift */,
@@ -192,6 +193,8 @@
 				B52A316421A6CD2700764B39 /* CustomNavigationBarHeaderView.swift */,
 				B580948A21AF80530078F3B3 /* HeaderStackView.swift */,
 				B57E335E21B0C9D10093FFC6 /* CustomLabelButton.swift */,
+				B576F88621BDED860000FE95 /* OilTypeCell.swift */,
+				B576F8A821BE28260000FE95 /* CustomVerticalStackView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -305,9 +308,9 @@
 				B52A316521A6CD2700764B39 /* CustomNavigationBarHeaderView.swift in Sources */,
 				B5A9E3C621ABA0AA00507440 /* API.swift in Sources */,
 				B5BBC67421ABE37100006A62 /* AvgLastWeek.swift in Sources */,
+				B576F88721BDED860000FE95 /* OilTypeCell.swift in Sources */,
 				B51BB5D521A2C09100F852D2 /* RadiusCircularButton.swift in Sources */,
 				B5BBC66E21ABD16D00006A62 /* AvgSidoPrice.swift in Sources */,
-				B5B71A43219D3971008D8243 /* ViewController.swift in Sources */,
 				B51BB5CD21A26C2F00F852D2 /* CustomLabel.swift in Sources */,
 				B51B940721A3F18500BE346B /* SelectSortListView.swift in Sources */,
 				B5BBC66C21ABCCA600006A62 /* AvgAllPrice.swift in Sources */,
@@ -322,6 +325,7 @@
 				B5BBC67021ABD7D600006A62 /* AvgSigunPrice.swift in Sources */,
 				B5BBC67621ABE64500006A62 /* LowTop10.swift in Sources */,
 				B5BBC67A21ABE94600006A62 /* ProductCode.swift in Sources */,
+				B576F8A921BE28260000FE95 /* CustomVerticalStackView.swift in Sources */,
 				B555A179219E05BE0006F9D4 /* SearchController.swift in Sources */,
 				B53E1563219EA06800A7D4A9 /* CustomTextField.swift in Sources */,
 				B5BBC68021AC1CBE00006A62 /* AreaCode.swift in Sources */,
