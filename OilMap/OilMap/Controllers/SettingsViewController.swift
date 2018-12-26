@@ -15,17 +15,35 @@ class SettingsViewController: UITableViewController {
   let cellId = "cellId"
   let sectionItems = ["반경", "유종선택", "검색 상표 입력", "카드 할인 입력"]
   
+  var detailViewController: UIViewController = UINavigationController(rootViewController: UIViewController())
+  
   // MARK:- View Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     setupNavigationItem()
     setupViews()
-    setupGestures()
+//    setupGestures()
+//    setupRadiusButtonCondition()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    setupSettingCondition()
   }
   
   // MARK:- Setup Works
   fileprivate func setupViews() {
     
+  }
+  
+//  func setupRadiusButtonCondition() {
+//
+//  }
+  
+  fileprivate func setupSettingCondition() {
+    print("Setup Setting Condition")
+    // read setting data
+    // view에 설정
   }
   
   fileprivate func setupGestures() {
@@ -46,7 +64,7 @@ class SettingsViewController: UITableViewController {
     }
     
     navigationItem.title = "설정"
-    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "close", style: .plain, target: self, action: #selector(handleClose))
+    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "iconChevron")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleClose))
     navigationItem.rightBarButtonItem?.tintColor = .black
   }
   
@@ -97,10 +115,29 @@ extension SettingsViewController {
       cell = OilTypeCell(style: .default, reuseIdentifier: cellId)
     case 2:
       cell = UITableViewCell(style: .default, reuseIdentifier: cellId)
+      cell.accessoryType = .disclosureIndicator
       cell.textLabel?.text = "검색 상표 입력"
     default:
       cell = UITableViewCell(style: .default, reuseIdentifier: cellId)
     }
     return cell
   }
+  
+//  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//    tableView.deselectRow(at: indexPath, animated: true)
+//     didSelectMenuItem(indexPath: indexPath)
+//  }
+  
+//  func didSelectMenuItem(indexPath: IndexPath) {
+//    switch indexPath.section {
+//    case 2:
+//      detailViewController = UINavigationController(rootViewController: OilStationBrandController())
+//    case 3:
+//      detailViewController = UINavigationController(rootViewController: OilStationBrandController())
+//    default:
+//      print("Test")
+//    }
+//    let navController = UINavigationController(rootViewController: detailViewController)
+//    navController.pushViewController(OilStationBrandController(), animated: true)
+//  }
 }

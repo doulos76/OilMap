@@ -8,21 +8,21 @@
 
 import Foundation
 
-struct LowTop10: Decodable {
-  let result: LowTop10Result
+struct LowTopTen: Decodable {
+  let result: LowTopTenResult
   enum CodingKeys: String, CodingKey {
     case result = "RESULT"
   }
 }
 
-struct LowTop10Result: Decodable {
-  let oil: [LowTop10Oil]
+struct LowTopTenResult: Decodable {
+  let oil: [LowTopTenOil]
   enum CodingKeys: String, CodingKey {
     case oil = "OIL"
   }
 }
 
-struct LowTop10Oil: Decodable {
+struct LowTopTenOil: Decodable {
   let uniId: String
   let price: Int
   let pollDivCode: PollDivCode

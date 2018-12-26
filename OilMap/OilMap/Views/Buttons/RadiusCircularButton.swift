@@ -1,5 +1,5 @@
 //
-//  OilTypeCircularButton.swift
+//  RadiusCircularButton.swift
 //  OilMap
 //
 //  Created by dave76 on 19/11/2018.
@@ -8,27 +8,27 @@
 
 import UIKit
 
-class OilTypeCircularButton: RadiusCircularButton {
+class RadiusCircularButton: UIButton {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    isSelected = false
-    setImage(UIImage(named: "iconOilGun")?.withRenderingMode(.alwaysOriginal), for: .normal)
+    setTitleColor(.darkGray, for: .normal)
+    titleLabel?.font = UIFont.init(name: "AppleSDGothicNeo-Bold", size: 20)
     backgroundColor = .lightGray
-    tintColor = .clear
     layer.cornerRadius = 28
     layer.masksToBounds = true
     addTarget(self, action: #selector(buttonTouched), for: .touchUpInside)
   }
   
-  @objc override func buttonTouched() {
-    if isSelected == true {
+  @objc func buttonTouched() {
+    if isSelected == false {
       backgroundColor = .lightGray
-//      setTitleColor(.darkGray, for: .normal)
-      isSelected = false
-    } else {
-      backgroundColor = #colorLiteral(red: 0.9603450894, green: 0.6483944058, blue: 0.1405650675, alpha: 1)
+      setTitleColor(.darkGray, for: .normal)
       isSelected = true
+    } else {
+      backgroundColor = .black
+      setTitleColor(.white, for: .normal)
+      isSelected = false
     }
   }
   

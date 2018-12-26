@@ -13,15 +13,18 @@
 		B51B940721A3F18500BE346B /* SelectSortListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51B940621A3F18500BE346B /* SelectSortListView.swift */; };
 		B51BB5CD21A26C2F00F852D2 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51BB5CC21A26C2F00F852D2 /* CustomLabel.swift */; };
 		B51BB5CF21A28BED00F852D2 /* RectangleCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51BB5CE21A28BED00F852D2 /* RectangleCustomButton.swift */; };
-		B51BB5D121A2A13D00F852D2 /* SettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51BB5D021A2A13D00F852D2 /* SettingController.swift */; };
 		B51BB5D321A2BC9400F852D2 /* RadiusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51BB5D221A2BC9400F852D2 /* RadiusCell.swift */; };
 		B51BB5D521A2C09100F852D2 /* RadiusCircularButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51BB5D421A2C09100F852D2 /* RadiusCircularButton.swift */; };
 		B51BB5F521A2E1A000F852D2 /* OilTypeCircularButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51BB5F421A2E1A000F852D2 /* OilTypeCircularButton.swift */; };
 		B52A316521A6CD2700764B39 /* CustomNavigationBarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A316421A6CD2700764B39 /* CustomNavigationBarHeaderView.swift */; };
+		B53CEAD421C1FFC0005C25F3 /* LowTopTenApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53CEAD321C1FFC0005C25F3 /* LowTopTenApi.swift */; };
+		B53CEAD621C20BD0005C25F3 /* AroundAllApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53CEAD521C20BD0005C25F3 /* AroundAllApi.swift */; };
 		B53E1563219EA06800A7D4A9 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53E1562219EA06800A7D4A9 /* CustomTextField.swift */; };
 		B54BA75A21AD010200F9CDB2 /* GeoConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54BA75921AD010200F9CDB2 /* GeoConverter.swift */; };
 		B555A177219DCD270006F9D4 /* RoundCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B555A176219DCD270006F9D4 /* RoundCustomButton.swift */; };
 		B555A179219E05BE0006F9D4 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B555A178219E05BE0006F9D4 /* SearchController.swift */; };
+		B575C39B21BFC5AE0028606C /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B575C39A21BFC5AE0028606C /* Distance.swift */; };
+		B575C3A121BFD0650028606C /* OilStationBrandController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B575C3A021BFD0650028606C /* OilStationBrandController.swift */; };
 		B576F88721BDED860000FE95 /* OilTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B576F88621BDED860000FE95 /* OilTypeCell.swift */; };
 		B576F8A921BE28260000FE95 /* CustomVerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B576F8A821BE28260000FE95 /* CustomVerticalStackView.swift */; };
 		B57E335F21B0C9D10093FFC6 /* CustomLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57E335E21B0C9D10093FFC6 /* CustomLabelButton.swift */; };
@@ -40,7 +43,7 @@
 		B5BBC67021ABD7D600006A62 /* AvgSigunPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC66F21ABD7D600006A62 /* AvgSigunPrice.swift */; };
 		B5BBC67221ABE00100006A62 /* AvgRecentPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC67121ABE00100006A62 /* AvgRecentPrice.swift */; };
 		B5BBC67421ABE37100006A62 /* AvgLastWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC67321ABE37100006A62 /* AvgLastWeek.swift */; };
-		B5BBC67621ABE64500006A62 /* LowTop10.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC67521ABE64500006A62 /* LowTop10.swift */; };
+		B5BBC67621ABE64500006A62 /* LowTopTen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC67521ABE64500006A62 /* LowTopTen.swift */; };
 		B5BBC67821ABE92300006A62 /* PollDivCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC67721ABE92300006A62 /* PollDivCode.swift */; };
 		B5BBC67A21ABE94600006A62 /* ProductCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC67921ABE94600006A62 /* ProductCode.swift */; };
 		B5BBC67C21ABEAB300006A62 /* AroundAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC67B21ABEAB300006A62 /* AroundAll.swift */; };
@@ -56,15 +59,18 @@
 		B51B940621A3F18500BE346B /* SelectSortListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSortListView.swift; sourceTree = "<group>"; };
 		B51BB5CC21A26C2F00F852D2 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		B51BB5CE21A28BED00F852D2 /* RectangleCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleCustomButton.swift; sourceTree = "<group>"; };
-		B51BB5D021A2A13D00F852D2 /* SettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingController.swift; sourceTree = "<group>"; };
 		B51BB5D221A2BC9400F852D2 /* RadiusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusCell.swift; sourceTree = "<group>"; };
 		B51BB5D421A2C09100F852D2 /* RadiusCircularButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusCircularButton.swift; sourceTree = "<group>"; };
 		B51BB5F421A2E1A000F852D2 /* OilTypeCircularButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilTypeCircularButton.swift; sourceTree = "<group>"; };
 		B52A316421A6CD2700764B39 /* CustomNavigationBarHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarHeaderView.swift; sourceTree = "<group>"; };
+		B53CEAD321C1FFC0005C25F3 /* LowTopTenApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowTopTenApi.swift; sourceTree = "<group>"; };
+		B53CEAD521C20BD0005C25F3 /* AroundAllApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AroundAllApi.swift; sourceTree = "<group>"; };
 		B53E1562219EA06800A7D4A9 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		B54BA75921AD010200F9CDB2 /* GeoConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoConverter.swift; sourceTree = "<group>"; };
 		B555A176219DCD270006F9D4 /* RoundCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCustomButton.swift; sourceTree = "<group>"; };
 		B555A178219E05BE0006F9D4 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		B575C39A21BFC5AE0028606C /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
+		B575C3A021BFD0650028606C /* OilStationBrandController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilStationBrandController.swift; sourceTree = "<group>"; };
 		B576F88621BDED860000FE95 /* OilTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilTypeCell.swift; sourceTree = "<group>"; };
 		B576F8A821BE28260000FE95 /* CustomVerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVerticalStackView.swift; sourceTree = "<group>"; };
 		B57E335E21B0C9D10093FFC6 /* CustomLabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabelButton.swift; sourceTree = "<group>"; };
@@ -85,7 +91,7 @@
 		B5BBC66F21ABD7D600006A62 /* AvgSigunPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvgSigunPrice.swift; sourceTree = "<group>"; };
 		B5BBC67121ABE00100006A62 /* AvgRecentPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvgRecentPrice.swift; sourceTree = "<group>"; };
 		B5BBC67321ABE37100006A62 /* AvgLastWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvgLastWeek.swift; sourceTree = "<group>"; };
-		B5BBC67521ABE64500006A62 /* LowTop10.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowTop10.swift; sourceTree = "<group>"; };
+		B5BBC67521ABE64500006A62 /* LowTopTen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowTopTen.swift; sourceTree = "<group>"; };
 		B5BBC67721ABE92300006A62 /* PollDivCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollDivCode.swift; sourceTree = "<group>"; };
 		B5BBC67921ABE94600006A62 /* ProductCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCode.swift; sourceTree = "<group>"; };
 		B5BBC67B21ABEAB300006A62 /* AroundAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AroundAll.swift; sourceTree = "<group>"; };
@@ -113,11 +119,43 @@
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
+		B575C39C21BFC60B0028606C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B51B940421A3E63F00BE346B /* GasStationCell.swift */,
+				B576F88621BDED860000FE95 /* OilTypeCell.swift */,
+				B51BB5D221A2BC9400F852D2 /* RadiusCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		B575C39D21BFC61A0028606C /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				B51BB5CE21A28BED00F852D2 /* RectangleCustomButton.swift */,
+				B57E335E21B0C9D10093FFC6 /* CustomLabelButton.swift */,
+				B51BB5D421A2C09100F852D2 /* RadiusCircularButton.swift */,
+				B51BB5F421A2E1A000F852D2 /* OilTypeCircularButton.swift */,
+				B555A176219DCD270006F9D4 /* RoundCustomButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		B575C39E21BFC6210028606C /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				B51BB5CC21A26C2F00F852D2 /* CustomLabel.swift */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
 		B5A9E3C421ABA07500507440 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				B5A9E3C521ABA0AA00507440 /* API.swift */,
 				B57E336021B0D0B40093FFC6 /* AvgAlllPriceApi.swift */,
+				B53CEAD321C1FFC0005C25F3 /* LowTopTenApi.swift */,
+				B53CEAD521C20BD0005C25F3 /* AroundAllApi.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -171,9 +209,9 @@
 			children = (
 				B5B71A5C219D87C1008D8243 /* MainViewController.swift */,
 				B555A178219E05BE0006F9D4 /* SearchController.swift */,
-				B51BB5D021A2A13D00F852D2 /* SettingController.swift */,
 				B51B940221A3E34000BE346B /* GasStationListController.swift */,
 				B51A44C321BA0A130047049F /* SettingsViewController.swift */,
+				B575C3A021BFD0650028606C /* OilStationBrandController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -182,19 +220,13 @@
 			isa = PBXGroup;
 			children = (
 				B53E1562219EA06800A7D4A9 /* CustomTextField.swift */,
-				B51BB5CC21A26C2F00F852D2 /* CustomLabel.swift */,
-				B51BB5CE21A28BED00F852D2 /* RectangleCustomButton.swift */,
-				B51BB5D221A2BC9400F852D2 /* RadiusCell.swift */,
-				B555A176219DCD270006F9D4 /* RoundCustomButton.swift */,
-				B51BB5D421A2C09100F852D2 /* RadiusCircularButton.swift */,
-				B51BB5F421A2E1A000F852D2 /* OilTypeCircularButton.swift */,
-				B51B940421A3E63F00BE346B /* GasStationCell.swift */,
 				B51B940621A3F18500BE346B /* SelectSortListView.swift */,
 				B52A316421A6CD2700764B39 /* CustomNavigationBarHeaderView.swift */,
 				B580948A21AF80530078F3B3 /* HeaderStackView.swift */,
-				B57E335E21B0C9D10093FFC6 /* CustomLabelButton.swift */,
-				B576F88621BDED860000FE95 /* OilTypeCell.swift */,
 				B576F8A821BE28260000FE95 /* CustomVerticalStackView.swift */,
+				B575C39E21BFC6210028606C /* Labels */,
+				B575C39D21BFC61A0028606C /* Buttons */,
+				B575C39C21BFC60B0028606C /* Cell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -209,11 +241,12 @@
 				B5BBC66F21ABD7D600006A62 /* AvgSigunPrice.swift */,
 				B5BBC67121ABE00100006A62 /* AvgRecentPrice.swift */,
 				B5BBC67321ABE37100006A62 /* AvgLastWeek.swift */,
-				B5BBC67521ABE64500006A62 /* LowTop10.swift */,
+				B5BBC67521ABE64500006A62 /* LowTopTen.swift */,
 				B5BBC67B21ABEAB300006A62 /* AroundAll.swift */,
 				B5BBC67D21AC06C100006A62 /* DetailById.swift */,
 				B5BBC67F21AC1CBE00006A62 /* AreaCode.swift */,
 				B5BBC68121AC1E4E00006A62 /* SearchByName.swift */,
+				B575C39A21BFC5AE0028606C /* Distance.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -304,6 +337,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B53CEAD421C1FFC0005C25F3 /* LowTopTenApi.swift in Sources */,
+				B53CEAD621C20BD0005C25F3 /* AroundAllApi.swift in Sources */,
 				B54BA75A21AD010200F9CDB2 /* GeoConverter.swift in Sources */,
 				B52A316521A6CD2700764B39 /* CustomNavigationBarHeaderView.swift in Sources */,
 				B5A9E3C621ABA0AA00507440 /* API.swift in Sources */,
@@ -323,7 +358,7 @@
 				B555A177219DCD270006F9D4 /* RoundCustomButton.swift in Sources */,
 				B5BBC67821ABE92300006A62 /* PollDivCode.swift in Sources */,
 				B5BBC67021ABD7D600006A62 /* AvgSigunPrice.swift in Sources */,
-				B5BBC67621ABE64500006A62 /* LowTop10.swift in Sources */,
+				B5BBC67621ABE64500006A62 /* LowTopTen.swift in Sources */,
 				B5BBC67A21ABE94600006A62 /* ProductCode.swift in Sources */,
 				B576F8A921BE28260000FE95 /* CustomVerticalStackView.swift in Sources */,
 				B555A179219E05BE0006F9D4 /* SearchController.swift in Sources */,
@@ -333,10 +368,11 @@
 				B5BBC68221AC1E4E00006A62 /* SearchByName.swift in Sources */,
 				B5BBC67E21AC06C100006A62 /* DetailById.swift in Sources */,
 				B5B71A41219D3971008D8243 /* AppDelegate.swift in Sources */,
+				B575C3A121BFD0650028606C /* OilStationBrandController.swift in Sources */,
 				B51B940521A3E63F00BE346B /* GasStationCell.swift in Sources */,
+				B575C39B21BFC5AE0028606C /* Distance.swift in Sources */,
 				B57E336121B0D0B40093FFC6 /* AvgAlllPriceApi.swift in Sources */,
 				B5BBC67C21ABEAB300006A62 /* AroundAll.swift in Sources */,
-				B51BB5D121A2A13D00F852D2 /* SettingController.swift in Sources */,
 				B57E335F21B0C9D10093FFC6 /* CustomLabelButton.swift in Sources */,
 				B5B71A5B219D439F008D8243 /* Constants.swift in Sources */,
 				B5B71A5D219D87C1008D8243 /* MainViewController.swift in Sources */,

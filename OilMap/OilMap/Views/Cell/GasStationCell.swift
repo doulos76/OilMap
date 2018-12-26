@@ -10,6 +10,37 @@ import UIKit
 
 class GasStationCell: UITableViewCell {
   
+  var gasStation: AroundAllOil? {
+    didSet {
+      titleLabel.text = gasStation?.oilStationName
+      priceLabel.text = "\(gasStation!.price)원"
+      distanceLabel.text = "\(gasStation!.distance)m"
+      guard let imageName: PollDivCode = gasStation?.pollDivCode else { return }
+      var imageNameString: String = ""
+      switch imageName {
+      case .ske:
+        imageNameString = "logoSKE"
+      case .gsc:
+        imageNameString = "logoGSC"
+      case .e1g:
+        imageNameString = "logoE1G"
+      case .hdo:
+        imageNameString = "logoHDO"
+      case .rto:
+        imageNameString = "logoRTO"
+      case .sol:
+        imageNameString = "logoSOL"
+      case .rtx:
+        imageNameString = "logoRTX"
+      case .nho:
+        imageNameString = "logoNHO"
+      default:
+        imageNameString = "logoETC"
+      }
+      stationImageView.image = UIImage(named: imageNameString)
+    }
+  }
+  
   let stationImageView: UIImageView = {
     let imageView = UIImageView()
     imageView.image = UIImage(named: "logoSK")

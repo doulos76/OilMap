@@ -1,18 +1,19 @@
 //
-//  AvgAlllPriceApi.swift
+//  AroundAllApi.swift
 //  OilMap
 //
-//  Created by dave76 on 30/11/2018.
+//  Created by dave76 on 13/12/2018.
 //  Copyright © 2018 dave76. All rights reserved.
 //
 
 import Foundation
 
-class AvgAllPriceApi {
-  
+
+class AroundAllApi {
   // Web request with Codable
-  func getAvgAllPrice(completion: @escaping AvgAllPriceResponseCompletion) {
-    let urlString = AVG_ALL_PRICE + QUERY_OUT_JSON_AND_OPINET_CODE
+  func getAroundAll(radius: Int, productCode: String, x: Double, y: Double, sort: Int, completion: @escaping AroundAllResponseCompletion) {
+    let urlString = AROUND_ALL + QUERY_OUT_JSON_AND_OPINET_CODE + "&radius=\(radius)" + "&prodcd=\(productCode)" + "&x=\(x)" + "&y=\(y)" + "&sort=\(sort)"
+    print("\n================[\(urlString)]================\n")
     guard let url = URL(string: urlString) else { return }
     let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
       guard error == nil else {
@@ -20,13 +21,11 @@ class AvgAllPriceApi {
         completion(nil)
         return
       }
-      
       guard let data = data else { return }
-      
       let jsonDecoder = JSONDecoder()
       do {
-        let avgAllPrice = try jsonDecoder.decode(AvgAllPrice.self, from: data)
-        completion(avgAllPrice)
+        let aroundAll = try jsonDecoder.decode(AroundAll.self, from: data)
+        completion(aroundAll)
       } catch {
         debugPrint(error.localizedDescription)
         completion(nil)

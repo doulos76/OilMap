@@ -16,7 +16,6 @@ class OilTypeCell: UITableViewCell {
   var verticalStakViewList = [UIStackView]()
   var horizontalStackView = UIStackView()
   
-
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     setupVerticalStackView()
@@ -49,8 +48,15 @@ class OilTypeCell: UITableViewCell {
     }
   }
   
+  func printButtonsTag() {
+    print(buttonList[0])
+  }
+  
+  func buttonTouched() {
+    
+  }
+  
   fileprivate func setupViews() {
-    //    horizontalStackView.addArrangedSubview(verticalStakViewList)
     horizontalStackView.spacing = 8
     horizontalStackView.axis = .horizontal
     horizontalStackView.distribution = .equalSpacing

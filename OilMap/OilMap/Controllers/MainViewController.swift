@@ -27,11 +27,38 @@ class MainViewController: UIViewController {
     avgAllPriceApi.getAvgAllPrice { (avgAllPrice) in
       if let avgAllPrice = avgAllPrice {
         self.avgAllPriceOils = avgAllPrice.result.oil
-        print("\n================[avgAllPriceOils]================\n")
-        print(self.avgAllPriceOils)
-       }
+        //print("\n================[avgAllPriceOils]================\n")
+        //print(self.avgAllPriceOils)
+        DispatchQueue.main.async {
+          self.oilTypeLabel.text = avgAllPrice.result.oil[1].productName
+          let price = avgAllPrice.result.oil[1].price
+          self.nationalAvgOilPriceLabel.text = "전국평균: \(Int(Double(price)!.rounded()))원"
+        }
+      }
     }
   }
+  
+  // Low Top 10 Gas Station
+  var lowTopTen = [LowTopTenOil]()
+  var lowTopTenApi = LowTopTenApi()
+  
+  func displayLowTopTen() {
+    lowTopTenApi.getLowTopTen(areaCode: 00, productCode: ProductCode.b027) { (lowTopTen) in
+      if let lowTopTen = lowTopTen {
+        self.lowTopTen = lowTopTen.result.oil
+        print("\n================[low top 10 Gas Station]================\n")
+        print(lowTopTen.result.oil)
+        let price = lowTopTen.result.oil[1].price
+        DispatchQueue.main.async {
+          self.nationalMinimumOilPriceLabel.text = "전국최저: \(price)원"
+        }
+      }
+    }
+  }
+  
+  // AroundAll
+  var aroundAll = [AroundAll]()
+  var aroundAllApi = AroundAllApi()
   
   // MARK:- Properties
   let oilTypeLabel: CustomLabel = {
@@ -39,33 +66,33 @@ class MainViewController: UIViewController {
     label.text = "휘발유"
     return label
   }()
-
+  
   let currentMapMinimumOilPriceLabel: CustomLabel = {
     let label = CustomLabel()
-    label.text = "최저: 1458원"
+    label.text = "최저: --원"
     label.textColor = UIColor.black
     label.backgroundColor = UIColor.customOrangeColor
     return label
   }()
-
+  
   let nationalAvgOilPriceLabel: CustomLabel = {
     let label = CustomLabel()
-    label.text = "전국평균: 1567원"
+    label.text = "전국평균: --원"
     return label
   }()
-
+  
   let nationalMinimumOilPriceLabel: CustomLabel = {
     let label = CustomLabel()
-    label.text = "전국최저: 1375원"
+    label.text = "전국최저: --원"
     return label
   }()
-
+  
   let radiusButton: RectangleCustomButton = {
     let button = RectangleCustomButton()
     button.setTitle("반경: \(5)Km", for: .normal)
     return button
   }()
-
+  
   let moveLocationButton: RectangleCustomButton = {
     let button = RectangleCustomButton(type: UIButton.ButtonType.system)
     button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
@@ -119,7 +146,8 @@ class MainViewController: UIViewController {
     let gasStationListController = GasStationListController()
     let navController = CustomNavigationController(rootViewController: gasStationListController)
     present(navController, animated: true, completion: nil)
-//    navController.pushViewController(navController, animated: true)
+    //    navController.pushViewController(navController, animated: true)
+    menuIsExpanded = false
   }
   
   /// current location button
@@ -140,9 +168,6 @@ class MainViewController: UIViewController {
     button.setImage(UIImage(named: "iconMenuSetting"), for: .normal)
     button.backgroundColor = UIColor.customOrangeColor
     button.layer.cornerRadius = 22
-//    button.addTarget(self, action: #selector(displaySettingsViewController), for: .touchUpInside)
-//    button.addTarget(self, action: #selector(moveToSettingController), for: .touchUpInside)
-//    button.addTarget(self, action: #selector(callSettingController), for: .touchUpInside)
     button.addTarget(self, action: #selector(moveToSettingsViewController), for: .touchUpInside)
     return button
   }()
@@ -151,7 +176,7 @@ class MainViewController: UIViewController {
     print("Move to Setting View Controller")
     let navController = UINavigationController(rootViewController: settingsViewController)
     navController.view.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: view.frame.height)
-
+    
     let mainWindow = UIApplication.shared.keyWindow
     mainWindow?.addSubview(navController.view)
     view.addSubview(darkCoverView)
@@ -165,39 +190,7 @@ class MainViewController: UIViewController {
   }
   
   let settingsViewController = SettingsViewController()
-  let settingController = SettingController()
   let settingMenuHeight: CGFloat = 850
-  
-  @objc func callSettingController() {
-    print("call SettingsController")
-    // initial position
-    settingController.view.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: view.frame.height)
-    let mainWindow = UIApplication.shared.keyWindow
-    mainWindow?.addSubview(settingController.view)
-    
-    UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-      self.settingController.view.transform = CGAffineTransform(translationX: 0, y: -self.settingMenuHeight)
-    })
-    addChild(settingController)
-  }
-  
-  @objc func displaySettingsViewController() {
-    handleMenuTouched()
-    print("display Setting View Controller")
-    let settingController = SettingController()
-//    let navController = CustomNavigationController(rootViewController: settingController)
-    settingController.modalPresentationStyle = .custom
-    present(settingController, animated: true, completion: nil)
-  }
-
-  @objc func moveToSettingController() {
-    handleMenuTouched()
-    print("moveToSettingController")
-    let settingController = SettingController()
-
-    let navController = CustomNavigationController(rootViewController: settingController)
-    present(navController, animated: true)
-  }
   
   // search button
   var searchButton: RoundCustomButton = {
@@ -209,7 +202,7 @@ class MainViewController: UIViewController {
     button.addTarget(self, action: #selector(searchLocalGasStation), for: .touchUpInside)
     return button
   }()
-
+  
   // searchTextField
   var searchTextField: CustomTextField = {
     let textField = CustomTextField()
@@ -270,6 +263,13 @@ class MainViewController: UIViewController {
     setupViews()
     startUpdatingLocation()
     displayAvgAllPrice()
+    displayLowTopTen()
+    
+//    let location = CLLocationCoordinate2D(latitude: <#T##CLLocationDegrees#>, longitude: <#T##CLLocationDegrees#>)
+//    let location = CLLocationCoordinate2D(latitude: 37.572851, longitude: 126.976881)
+//    let point = MKPointAnnotation()
+//    point.coordinate = location
+//    mapView.addAnnotation(point)
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -302,7 +302,7 @@ class MainViewController: UIViewController {
       headerStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
       menuButtonBottomConstraintSize.constant = -150
       menuButtonBottomConstraintSize.isActive = true
-
+      
     }
     view.layoutIfNeeded()
   }
@@ -320,7 +320,7 @@ class MainViewController: UIViewController {
     let region = MKCoordinateRegion(center: center, span: span)
     mapView.setRegion(region, animated: true)
   }
-
+  
   
   private func updateCurrentLocation() {
     locationManager.requestLocation()
@@ -382,7 +382,7 @@ class MainViewController: UIViewController {
       button.centerXAnchor.constraint(equalTo: menuButton.centerXAnchor).isActive = true
     }
     
-//    view.addSubview(headerStackView)
+    //    view.addSubview(headerStackView)
     let arrangedOilPriceDisplaySubView = [oilTypeLabel, currentMapMinimumOilPriceLabel, nationalAvgOilPriceLabel, nationalMinimumOilPriceLabel]
     let oilPriceDisplayStackView = UIStackView(arrangedSubviews: arrangedOilPriceDisplaySubView)
     oilPriceDisplayStackView.axis = .vertical
@@ -423,7 +423,7 @@ class MainViewController: UIViewController {
   @objc func handleCurrentLocationButtonTouched() {
     print("currentLocation Button Touched")
     handleMenuTouched()
-//    moveToInitialCoordinate()
+    //    moveToInitialCoordinate()
     updateCurrentLocation()
   }
   
@@ -434,7 +434,7 @@ class MainViewController: UIViewController {
     searchTextField.trailingAnchor.constraint(equalTo: menuButton.leadingAnchor, constant: 0).isActive = true
     searchTextField.heightAnchor.constraint(equalToConstant: 30).isActive = true
     searchTextField.centerYAnchor.constraint(equalTo: menuButton.centerYAnchor, constant: searchTextFieldYConstraintConstant ?? 0).isActive = true
-
+    
     UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.2, options: .curveEaseInOut, animations: {
       self.searchButton.textLable.isHidden = true
       self.searchTextField.isHidden = false
@@ -447,7 +447,7 @@ class MainViewController: UIViewController {
   
   @objc func searchLocalGasStation() {
     print("Searching Local GasStation")
-//    searchButton.textLable.isHidden = false
+    //    searchButton.textLable.isHidden = false
     setupTextField()
     print(searchButton.frame)
     print("searchTextField: ",searchTextField.frame)

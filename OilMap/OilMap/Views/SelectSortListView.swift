@@ -10,6 +10,8 @@ import UIKit
 
 class SelectSortListView: UIView {
   
+  var sort: Int = 1
+  
   let segmentedControl: UISegmentedControl = {
     let items = ["가격순", "거리순"]
     let segControl = UISegmentedControl(items: items)
@@ -30,8 +32,16 @@ class SelectSortListView: UIView {
     fatalError("init(coder:) has not been implemented")
   }
   
-  @objc func sortList() {
-    print("sort")
+  @objc func sortList(sort: Int) -> Int {
+    var sort = sort
+    if segmentedControl.selectedSegmentIndex == 0 {
+      print("sort 1")
+      sort = 1
+    } else {
+      print("sort 2")
+      sort = 2
+    }
+    return sort
   }
   
   fileprivate func setupSegmentedControlView() {

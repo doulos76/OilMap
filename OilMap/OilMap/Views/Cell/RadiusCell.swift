@@ -10,7 +10,9 @@ import UIKit
 
 class RadiusCell: UITableViewCell {
   
-  let buttonTitles = ["1Km", "3Km", "5Km", "10Km"]
+  let buttonTitles = ["1Km", "2Km", "3Km", "5Km"]
+  
+  let radiusList = [1000.0, 2000.0, 3000.0, 5000.0]
   
   let oneKmCircleButton: RadiusCircularButton = {
     let button = RadiusCircularButton()
@@ -19,31 +21,43 @@ class RadiusCell: UITableViewCell {
     return button
   }()
   
+  let twoKmCircleButton: RadiusCircularButton = {
+    let button = RadiusCircularButton()
+    button.setTitle("2Km", for: .normal)
+    return button
+  }()
+  
   let threeKmCircleButton: RadiusCircularButton = {
     let button = RadiusCircularButton()
     button.setTitle("3Km", for: .normal)
     return button
   }()
-
+  
   let fiveKmCircleButton: RadiusCircularButton = {
     let button = RadiusCircularButton()
     button.setTitle("5Km", for: .normal)
     return button
   }()
-
-  let tenKmCircleButton: RadiusCircularButton = {
-    let button = RadiusCircularButton()
-    button.setTitle("10Km", for: .normal)
-    return button
-  }()
-
+  
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     setupViews()
+    selectButton()
+  }
+  
+  func selectButton() {
+    let buttonList = [oneKmCircleButton, twoKmCircleButton, threeKmCircleButton, fiveKmCircleButton]
+    for button in buttonList {
+      button.isSelected = true
+    }
+  }
+  
+  @objc func buttonPressed() {
+    print("button pressed")
   }
   
   func setupViews() {
-    let arrangedSubviews = [oneKmCircleButton, threeKmCircleButton, fiveKmCircleButton, tenKmCircleButton]
+    let arrangedSubviews = [oneKmCircleButton, twoKmCircleButton, threeKmCircleButton, fiveKmCircleButton]
     let stackView = UIStackView(arrangedSubviews: arrangedSubviews)
     addSubview(stackView)
     stackView.distribution = .equalCentering
@@ -51,7 +65,6 @@ class RadiusCell: UITableViewCell {
     stackView.spacing = 20
     stackView.axis = .horizontal
     stackView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 16, left: 16, bottom: 0, right: 0), size: CGSize.zero)
-    //stackView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
   }
   
   required init?(coder aDecoder: NSCoder) {
